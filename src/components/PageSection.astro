@@ -1,0 +1,21 @@
+---
+/** Section de page avec titre + contenu, animation au scroll (variant slow par défaut) */
+import AnimateInView from './AnimateInView.astro'
+
+interface Props {
+  title: string
+  variant?: 'default' | 'slow' | 'scale'
+  class?: string
+}
+const { title, variant = 'slow', class: className } = Astro.props
+---
+<section class:list={['container mx-auto px-4 py-16 md:py-24', className]}>
+  <AnimateInView variant={variant}>
+    <h1 class="text-3xl font-bold text-white md:text-4xl">
+      {title}
+    </h1>
+    <div class="mt-8">
+      <slot />
+    </div>
+  </AnimateInView>
+</section>

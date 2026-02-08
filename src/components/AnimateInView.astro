@@ -1,0 +1,16 @@
+---
+/** Wrapper pour animation au scroll (data-animate-inview + optional stagger / variant slow | scale) */
+interface Props {
+  variant?: 'default' | 'slow' | 'scale'
+  stagger?: 0 | 1 | 2 | 3
+  class?: string
+}
+const { variant = 'default', stagger, class: className } = Astro.props
+---
+<div
+  data-animate-inview={variant === 'default' ? true : variant}
+  data-stagger={stagger !== undefined ? String(stagger) : undefined}
+  class={className}
+>
+  <slot />
+</div>
