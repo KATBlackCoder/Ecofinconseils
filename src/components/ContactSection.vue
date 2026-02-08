@@ -55,16 +55,6 @@ const contactInfo = computed(() =>
                 <p class="text-gray-300">{{ info.label }}</p>
               </Card>
             </div>
-            <Card class="overflow-hidden border-gray-800">
-              <div class="flex aspect-video items-center justify-center bg-gradient-to-br from-[#0D2137] to-[#0A1929]">
-                <div class="text-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="mx-auto mb-3 h-12 w-12 text-[#4CAF50]" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                    <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" /><circle cx="12" cy="10" r="3" />
-                  </svg>
-                  <p class="text-gray-400">Bamako, Mali</p>
-                </div>
-              </div>
-            </Card>
           </div>
         </AnimateInView>
       </div>

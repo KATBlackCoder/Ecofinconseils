@@ -24,7 +24,7 @@ const lang = path.startsWith('/en') ? 'en' : 'fr'
     <title>{title} — Ecofinconseils</title>
   </head>
   <body class="min-h-screen flex flex-col bg-black text-gray-100">
-    <Header client:load />
+    <Header client:load locale={lang} />
     <main class="flex-1">
       <slot />
     </main>

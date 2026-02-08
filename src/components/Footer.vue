@@ -3,22 +3,21 @@ import { computed } from 'vue'
 
 const props = defineProps<{ locale: 'fr' | 'en' }>()
 
-const prefix = computed(() => (props.locale === 'en' ? '/en' : ''))
 const links = computed(() =>
   props.locale === 'en'
     ? [
-        { href: `${prefix.value}/`, label: 'Home' },
-        { href: `${prefix.value}/services`, label: 'Services' },
-        { href: `${prefix.value}/about`, label: 'About' },
-        { href: `${prefix.value}/equipe`, label: 'Team' },
-        { href: `${prefix.value}/contact`, label: 'Contact' },
+        { href: '/en', label: 'Home' },
+        { href: '/en/services', label: 'Services' },
+        { href: '/en/about', label: 'About' },
+        { href: '/en/equipe', label: 'Team' },
+        { href: '/en/contact', label: 'Contact' },
       ]
     : [
-        { href: `${prefix.value}/`, label: 'Accueil' },
-        { href: `${prefix.value}/services`, label: 'Services' },
-        { href: `${prefix.value}/about`, label: 'À propos' },
-        { href: `${prefix.value}/equipe`, label: 'Équipe' },
-        { href: `${prefix.value}/contact`, label: 'Contact' },
+        { href: '/', label: 'Accueil' },
+        { href: '/services', label: 'Services' },
+        { href: '/about', label: 'À propos' },
+        { href: '/equipe', label: 'Équipe' },
+        { href: '/contact', label: 'Contact' },
       ]
 )
 const quickLinksTitle = computed(() => (props.locale === 'en' ? 'Quick links' : 'Liens Rapides'))
