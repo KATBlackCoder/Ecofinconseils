@@ -17,7 +17,7 @@ withDefaults(
 <template>
   <section
     :class="[
-      'relative overflow-hidden bg-gradient-to-br from-[#0A1929] via-[#0D2137] to-black',
+      'relative overflow-hidden bg-gradient-to-br from-background via-secondary to-gradient-from',
       variant === 'full'
         ? 'flex min-h-[calc(100vh-4rem)] flex-col items-center justify-center'
         : 'py-20 md:py-32',
@@ -25,8 +25,8 @@ withDefaults(
   >
     <template v-if="variant === 'full'">
       <div class="hero-grid-pattern absolute inset-0 opacity-30" aria-hidden="true" />
-      <div class="absolute top-20 left-10 h-32 w-32 rounded-full bg-[#4CAF50] opacity-10 blur-3xl" aria-hidden="true" />
-      <div class="absolute bottom-20 right-10 h-40 w-40 rounded-full bg-[#4CAF50] opacity-10 blur-3xl" aria-hidden="true" />
+      <div class="absolute top-20 left-10 h-32 w-32 rounded-full bg-primary opacity-10 blur-3xl" aria-hidden="true" />
+      <div class="absolute bottom-20 right-10 h-40 w-40 rounded-full bg-primary opacity-10 blur-3xl" aria-hidden="true" />
     </template>
     <div
       :class="[
@@ -37,7 +37,7 @@ withDefaults(
       <div class="motion-hero-in" :class="variant === 'compact' ? 'mx-auto max-w-3xl' : ''">
         <h1
           :class="[
-            'font-bold text-white',
+            'font-bold text-foreground',
             variant === 'full' ? 'text-4xl tracking-tight md:text-5xl lg:text-6xl' : 'mb-6 text-4xl md:text-5xl',
           ]"
         >
@@ -45,7 +45,7 @@ withDefaults(
         </h1>
         <p
           :class="[
-            'text-gray-300',
+            'text-muted-foreground',
             variant === 'full' ? 'mx-auto mt-6 max-w-2xl text-lg md:text-xl' : 'text-lg',
           ]"
         >
@@ -55,7 +55,7 @@ withDefaults(
           <Button
             as="a"
             :href="ctaHref"
-            class="inline-flex h-11 gap-2 bg-[#4CAF50] text-white shadow hover:bg-[#45a049]"
+            class="inline-flex h-11 gap-2 bg-primary text-primary-foreground shadow hover:bg-primary/90"
           >
             {{ ctaText }}
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">

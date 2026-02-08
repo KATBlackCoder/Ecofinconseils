@@ -7,6 +7,15 @@ Historique des changements. Format [Keep a Changelog](https://keepachangelog.com
 ### Added
 
 - Documentation projet : `docs/PROGRESS.md`, `docs/ARCHITECTURE.md`, `docs/CHANGELOG.md` (maintenance docs).
+- **Dark mode** : `ThemeToggle.vue`, thèmes clair/sombre via `light-theme.css` / `dark-theme.css`, persistance `localStorage` + script anti-flash dans BaseLayout.
+
+### Changed
+
+- **Styles** : Refactor en `src/styles/index.css` (entrée), `light-theme.css`, `dark-theme.css`, `animations.css`. Couleurs Tailwind en dur remplacées par classes de thème (`bg-background`, `text-primary`, etc.).
+
+### Removed
+
+- **Styles** : `src/styles/global.css` (contenu déplacé vers index + thèmes + animations).
 
 ---
 

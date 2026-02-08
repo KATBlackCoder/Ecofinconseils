@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 import LocaleSwitcher from './LocaleSwitcher.vue'
+import ThemeToggle from './ThemeToggle.vue'
 
 const props = defineProps<{ locale: 'fr' | 'en' }>()
 const mobileMenuOpen = ref(false)
@@ -26,28 +27,35 @@ const navItems = computed(() =>
 
 <template>
   <header
-    class="sticky top-0 z-50 w-full border-b border-gray-800 bg-[#0A1929]/95 backdrop-blur supports-[backdrop-filter]:bg-[#0A1929]/80"
+    class="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80"
   >
     <div class="container mx-auto flex h-16 items-center justify-between px-4 lg:px-8">
-      <a :href="locale === 'fr' ? '/' : '/en'" class="flex items-center font-bold">
-        <span class="text-xl text-white">Ecofin</span>
-        <span class="text-xl text-[#4CAF50]">conseils</span>
+      <a :href="locale === 'fr' ? '/' : '/en'" class="flex items-center gap-2 font-bold" aria-label="Ecofinconseils — Accueil">
+        <img
+          src="/logo-header.png"
+          srcset="/logo-header.png 1x, /logo-header@2x.png 2x"
+          alt=""
+          width="120"
+          height="48"
+          class="h-10 w-auto object-contain"
+        />
       </a>
       <nav class="hidden gap-6 md:flex">
         <a
           v-for="item in navItems"
           :key="item.href"
           :href="item.href"
-          class="text-sm text-gray-300 transition-colors hover:text-[#4CAF50]"
+          class="text-sm text-muted-foreground transition-colors hover:text-primary"
         >
           {{ item.label }}
         </a>
       </nav>
-      <div class="flex items-center gap-4">
+      <div class="flex items-center gap-2">
+        <ThemeToggle />
         <LocaleSwitcher :locale="locale" />
         <button
           type="button"
-          class="text-gray-300 md:hidden"
+          class="text-muted-foreground md:hidden"
           aria-label="Menu"
           @click="mobileMenuOpen = !mobileMenuOpen"
         >
@@ -63,13 +71,13 @@ const navItems = computed(() =>
         </button>
       </div>
     </div>
-    <nav v-show="mobileMenuOpen" class="border-t border-gray-700 py-4 md:hidden">
+    <nav v-show="mobileMenuOpen" class="border-t border-border py-4 md:hidden">
       <div class="container mx-auto flex flex-col gap-3 px-4">
         <a
           v-for="item in navItems"
           :key="item.href"
           :href="item.href"
-          class="py-2 text-gray-300 transition-colors hover:text-[#4CAF50]"
+          class="py-2 text-muted-foreground transition-colors hover:text-primary"
           @click="mobileMenuOpen = false"
         >
           {{ item.label }}

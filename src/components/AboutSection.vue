@@ -16,12 +16,12 @@ const valuesList = computed(() =>
   props.locale === 'en'
     ? [
         { title: 'Trust', desc: 'Transparency and integrity in every interaction', icon: 'shield' as const, colorClass: 'text-blue-400', bgClass: 'bg-blue-400/10' },
-        { title: 'Excellence', desc: 'High-level professional standards', icon: 'target' as const, colorClass: 'text-[#4CAF50]', bgClass: 'bg-[#4CAF50]/10' },
+        { title: 'Excellence', desc: 'High-level professional standards', icon: 'target' as const, colorClass: 'text-primary', bgClass: 'bg-primary/10' },
         { title: 'Innovation', desc: 'Modern solutions adapted to the local context', icon: 'lightbulb' as const, colorClass: 'text-purple-400', bgClass: 'bg-purple-400/10' },
       ]
     : [
         { title: 'Confiance', desc: 'Transparence et intégrité dans chaque interaction', icon: 'shield' as const, colorClass: 'text-blue-400', bgClass: 'bg-blue-400/10' },
-        { title: 'Excellence', desc: 'Standards professionnels de haut niveau', icon: 'target' as const, colorClass: 'text-[#4CAF50]', bgClass: 'bg-[#4CAF50]/10' },
+        { title: 'Excellence', desc: 'Standards professionnels de haut niveau', icon: 'target' as const, colorClass: 'text-primary', bgClass: 'bg-primary/10' },
         { title: 'Innovation', desc: 'Solutions modernes adaptées au contexte local', icon: 'lightbulb' as const, colorClass: 'text-purple-400', bgClass: 'bg-purple-400/10' },
       ]
 )
@@ -34,32 +34,32 @@ const missionBody = computed(() =>
 </script>
 
 <template>
-  <section class="bg-gradient-to-b from-black to-[#0A1929] py-20">
+  <section class="bg-gradient-to-b from-gradient-from to-gradient-to py-20">
     <div class="container mx-auto px-4 lg:px-8">
       <AnimateInView variant="slow">
         <div class="mx-auto max-w-4xl">
-          <Card class="border-gray-800 p-8 md:p-12">
+          <Card class="border-border p-8 md:p-12">
             <div class="mb-6 flex items-center">
-              <div class="mr-4 h-12 w-1 shrink-0 rounded-full bg-[#4CAF50]" aria-hidden="true" />
-              <h2 class="text-3xl font-bold text-white">{{ historyTitle }}</h2>
+              <div class="mr-4 h-12 w-1 shrink-0 rounded-full bg-primary" aria-hidden="true" />
+              <h2 class="text-3xl font-bold text-foreground">{{ historyTitle }}</h2>
             </div>
-            <p class="text-lg leading-relaxed text-gray-300">{{ historyContent }}</p>
+            <p class="text-lg leading-relaxed text-muted-foreground">{{ historyContent }}</p>
           </Card>
         </div>
       </AnimateInView>
     </div>
   </section>
-  <section class="bg-[#0A1929] py-20">
+  <section class="bg-background py-20">
     <div class="container mx-auto px-4 lg:px-8">
       <AnimateInView variant="slow">
         <div class="mb-12 text-center">
-          <h2 class="mb-4 text-3xl font-bold text-white md:text-4xl">{{ valuesTitle }}</h2>
-          <div class="mx-auto h-1 w-20 rounded-full bg-[#4CAF50]" aria-hidden="true" />
+          <h2 class="mb-4 text-3xl font-bold text-foreground md:text-4xl">{{ valuesTitle }}</h2>
+          <div class="mx-auto h-1 w-20 rounded-full bg-primary" aria-hidden="true" />
         </div>
       </AnimateInView>
       <div class="mx-auto grid max-w-5xl grid-cols-1 gap-8 md:grid-cols-3">
         <AnimateInView v-for="(value, index) in valuesList" :key="value.title" :stagger="index as 0 | 1 | 2">
-          <Card class="h-full border-gray-800 bg-gradient-to-br from-[#0D2137] to-[#0A1929] p-8 text-center transition-colors hover:border-[#4CAF50]">
+          <Card class="h-full border-border bg-gradient-to-br from-secondary to-background p-8 text-center transition-colors hover:border-primary">
             <div :class="['mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full', value.bgClass]">
               <svg v-if="value.icon === 'shield'" xmlns="http://www.w3.org/2000/svg" :class="['h-8 w-8', value.colorClass]" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                 <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
@@ -72,20 +72,20 @@ const missionBody = computed(() =>
                 <path d="M9 18h6" /><path d="M10 22h4" />
               </svg>
             </div>
-            <h3 class="mb-3 text-xl font-bold text-white">{{ value.title }}</h3>
-            <p class="text-gray-400">{{ value.desc }}</p>
+            <h3 class="mb-3 text-xl font-bold text-foreground">{{ value.title }}</h3>
+            <p class="text-muted-foreground">{{ value.desc }}</p>
           </Card>
         </AnimateInView>
       </div>
     </div>
   </section>
-  <section class="bg-gradient-to-t from-black to-[#0A1929] py-20">
+  <section class="bg-gradient-to-t from-gradient-from to-gradient-to py-20">
     <div class="container mx-auto px-4 lg:px-8">
       <AnimateInView variant="scale">
         <div class="mx-auto max-w-4xl">
-          <Card class="border-none bg-gradient-to-r from-[#4CAF50] to-[#45a049] p-8 text-center md:p-12">
-            <h2 class="mb-4 text-2xl font-bold text-white md:text-3xl">{{ missionTitle }}</h2>
-            <p class="mx-auto max-w-3xl text-lg leading-relaxed text-white/90">{{ missionBody }}</p>
+          <Card class="border-none bg-gradient-to-r from-primary to-primary/90 p-8 text-center md:p-12">
+            <h2 class="mb-4 text-2xl font-bold text-primary-foreground md:text-3xl">{{ missionTitle }}</h2>
+            <p class="mx-auto max-w-3xl text-lg leading-relaxed text-primary-foreground/90">{{ missionBody }}</p>
           </Card>
         </div>
       </AnimateInView>

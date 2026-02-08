@@ -36,26 +36,26 @@ const ctaBody = computed(() =>
 </script>
 
 <template>
-  <section class="bg-gradient-to-b from-black to-[#0A1929] py-20">
+  <section class="bg-gradient-to-b from-gradient-from to-gradient-to py-20">
     <div class="container mx-auto px-4 lg:px-8">
       <div class="mx-auto grid max-w-7xl grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
         <AnimateInView v-for="(member, index) in members" :key="member.name" :stagger="index as 0 | 1 | 2 | 3">
-          <Card class="group h-full overflow-hidden border-gray-800 transition-all duration-300 hover:border-[#4CAF50]">
+          <Card class="group h-full overflow-hidden border-border transition-all duration-300 hover:border-primary">
             <div class="relative aspect-square overflow-hidden">
               <img :src="MEMBER_IMAGES[index]" :alt="member.name" class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110" loading="lazy" width="400" height="400" />
-              <div class="absolute inset-0 bg-gradient-to-t from-[#0A1929] via-transparent to-transparent opacity-60" aria-hidden="true" />
+              <div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60" aria-hidden="true" />
             </div>
             <div class="p-6">
-              <h3 class="mb-1 text-xl font-bold text-white">{{ member.name }}</h3>
-              <p class="mb-3 text-sm text-[#4CAF50]">{{ member.role }}</p>
-              <p class="mb-4 text-sm text-gray-400">{{ member.bio }}</p>
+              <h3 class="mb-1 text-xl font-bold text-foreground">{{ member.name }}</h3>
+              <p class="mb-3 text-sm text-primary">{{ member.role }}</p>
+              <p class="mb-4 text-sm text-muted-foreground">{{ member.bio }}</p>
               <div class="flex gap-3">
-                <a href="#" class="text-gray-400 transition-colors hover:text-[#4CAF50]" aria-label="LinkedIn">
+                <a href="#" class="text-muted-foreground transition-colors hover:text-primary" aria-label="LinkedIn">
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                     <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z" /><rect width="4" height="12" x="2" y="9" /><circle cx="4" cy="4" r="2" />
                   </svg>
                 </a>
-                <a href="#" class="text-gray-400 transition-colors hover:text-[#4CAF50]" aria-label="Email">
+                <a href="#" class="text-muted-foreground transition-colors hover:text-primary" aria-label="Email">
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                     <rect width="20" height="16" x="2" y="4" rx="2" /><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
                   </svg>
@@ -67,14 +67,14 @@ const ctaBody = computed(() =>
       </div>
     </div>
   </section>
-  <section class="bg-[#0A1929] py-20">
+  <section class="bg-background py-20">
     <div class="container mx-auto px-4 lg:px-8">
       <AnimateInView variant="scale">
         <div class="mx-auto max-w-4xl">
-          <Card class="border-gray-800 bg-gradient-to-br from-[#0D2137] to-[#0A1929] p-8 text-center md:p-12">
-            <h2 class="mb-4 text-2xl font-bold text-white md:text-3xl">{{ ctaTitle }}</h2>
-            <p class="mx-auto mb-6 max-w-2xl text-gray-300">{{ ctaBody }}</p>
-            <a href="mailto:recrutement@ecofinconseils.ml" class="inline-flex items-center text-[#4CAF50] transition-colors hover:text-[#45a049]">
+          <Card class="border-border bg-gradient-to-br from-secondary to-background p-8 text-center md:p-12">
+            <h2 class="mb-4 text-2xl font-bold text-foreground md:text-3xl">{{ ctaTitle }}</h2>
+            <p class="mx-auto mb-6 max-w-2xl text-muted-foreground">{{ ctaBody }}</p>
+            <a href="mailto:recrutement@ecofinconseils.ml" class="inline-flex items-center text-primary transition-colors hover:text-primary/90">
               <svg xmlns="http://www.w3.org/2000/svg" class="mr-2 h-5 w-5" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                 <rect width="20" height="16" x="2" y="4" rx="2" /><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
               </svg>

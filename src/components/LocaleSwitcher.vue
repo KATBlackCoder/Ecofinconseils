@@ -23,7 +23,7 @@ function setLocale(l: 'fr' | 'en') {
 <template>
   <DropdownMenu>
     <DropdownMenuTrigger
-      class="flex items-center gap-2 rounded-md px-2 py-1.5 text-sm text-gray-300 transition-colors hover:text-[#4CAF50] focus:outline-none data-[state=open]:text-[#4CAF50]"
+      class="flex items-center gap-2 rounded-md px-2 py-1.5 text-sm text-muted-foreground transition-colors hover:text-primary focus:outline-none data-[state=open]:text-primary"
       :aria-label="ariaLabel"
     >
       <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -33,11 +33,11 @@ function setLocale(l: 'fr' | 'en') {
       </svg>
       <span>{{ currentLabel }}</span>
     </DropdownMenuTrigger>
-    <DropdownMenuContent class="min-w-[8rem] border-gray-700 bg-[#0A1929]" align="end">
-      <DropdownMenuItem class="cursor-pointer text-gray-300 focus:bg-[#0D2137] focus:text-[#4CAF50]" @select="setLocale('fr')">
+    <DropdownMenuContent class="min-w-32 border-border bg-popover" align="end">
+      <DropdownMenuItem class="cursor-pointer text-muted-foreground focus:bg-secondary focus:text-primary" @select="setLocale('fr')">
         Français
       </DropdownMenuItem>
-      <DropdownMenuItem class="cursor-pointer text-gray-300 focus:bg-[#0D2137] focus:text-[#4CAF50]" @select="setLocale('en')">
+      <DropdownMenuItem class="cursor-pointer text-muted-foreground focus:bg-secondary focus:text-primary" @select="setLocale('en')">
         English
       </DropdownMenuItem>
     </DropdownMenuContent>

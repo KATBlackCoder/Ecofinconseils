@@ -26,7 +26,7 @@
 
 - [x] shadcn-vue : Button, Card, Input, Label, Textarea, DropdownMenu, Badge
 - [x] Section Services alignée sur l’app React (CardHeader/CardContent, Badge vert, `bg-[#0A1929]/50`)
-- [x] Palette : `#0A1929`, `#0D2137`, `#4CAF50`, thème dans `global.css`
+- [x] Palette : `#0A1929`, `#0D2137`, `#4CAF50`, thème dans `index.css` + `light-theme.css` / `dark-theme.css`
 
 ### M3 — Documentation (En cours)
 

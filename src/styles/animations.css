@@ -1,0 +1,68 @@
+/**
+ * Animations — hero grid, scroll-in-view, stagger
+ * Uses var(--primary) for themeable hero pattern
+ */
+.hero-grid-pattern {
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cpattern id='g' width='60' height='60' patternUnits='userSpaceOnUse'%3E%3Cpath d='M 10 0 L 0 0 0 10' fill='none' stroke='rgba(76,175,80,0.1)' stroke-width='1'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23g)'/%3E%3C/svg%3E");
+}
+
+@keyframes motion-fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes motion-fade-in-scale {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.motion-hero-in {
+  animation: motion-fade-in-up 0.8s ease-out forwards;
+}
+
+[data-animate-inview] {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.5s ease-out,
+    transform 0.5s ease-out;
+}
+
+[data-animate-inview].in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+[data-animate-inview][data-stagger].in-view {
+  transition-duration: 0.5s;
+}
+[data-animate-inview][data-stagger="0"].in-view { transition-delay: 0s; }
+[data-animate-inview][data-stagger="1"].in-view { transition-delay: 0.1s; }
+[data-animate-inview][data-stagger="2"].in-view { transition-delay: 0.2s; }
+[data-animate-inview][data-stagger="3"].in-view { transition-delay: 0.3s; }
+
+[data-animate-inview="slow"] {
+  transition-duration: 0.8s;
+}
+
+[data-animate-inview="scale"] {
+  transform: translateY(0) scale(0.95);
+  transition-duration: 0.6s;
+}
+
+[data-animate-inview="scale"].in-view {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}

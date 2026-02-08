@@ -11,13 +11,13 @@ const contactInfo = computed(() =>
   props.locale === 'en'
     ? [
         { label: 'Bamako, Mali', icon: 'map' as const, colorClass: 'text-blue-400' },
-        { label: '+223 XX XX XX XX', icon: 'phone' as const, colorClass: 'text-[#4CAF50]' },
+        { label: '+223 XX XX XX XX', icon: 'phone' as const, colorClass: 'text-primary' },
         { label: 'contact@ecofinconseils.ml', icon: 'mail' as const, colorClass: 'text-purple-400' },
         { label: 'Mon - Fri: 8am - 6pm', icon: 'clock' as const, colorClass: 'text-orange-400' },
       ]
     : [
         { label: 'Bamako, Mali', icon: 'map' as const, colorClass: 'text-blue-400' },
-        { label: '+223 XX XX XX XX', icon: 'phone' as const, colorClass: 'text-[#4CAF50]' },
+        { label: '+223 XX XX XX XX', icon: 'phone' as const, colorClass: 'text-primary' },
         { label: 'contact@ecofinconseils.ml', icon: 'mail' as const, colorClass: 'text-purple-400' },
         { label: 'Lun - Ven : 8h - 18h', icon: 'clock' as const, colorClass: 'text-orange-400' },
       ]
@@ -25,20 +25,20 @@ const contactInfo = computed(() =>
 </script>
 
 <template>
-  <section class="bg-gradient-to-b from-black to-[#0A1929] py-20">
+  <section class="bg-gradient-to-b from-gradient-from to-gradient-to py-20">
     <div class="container mx-auto px-4 lg:px-8">
       <div class="mx-auto grid max-w-6xl grid-cols-1 gap-12 lg:grid-cols-2">
         <AnimateInView variant="slow">
-          <Card class="border-gray-800 p-8">
+          <Card class="border-border p-8">
             <ContactForm :locale="locale" />
           </Card>
         </AnimateInView>
         <AnimateInView variant="slow">
           <div class="space-y-6">
-            <h2 class="mb-6 text-2xl font-bold text-white">{{ infoTitle }}</h2>
+            <h2 class="mb-6 text-2xl font-bold text-foreground">{{ infoTitle }}</h2>
             <div class="space-y-4">
-              <Card v-for="info in contactInfo" :key="info.label" class="flex items-center gap-4 border-gray-800 p-6 transition-colors hover:border-[#4CAF50]">
-                <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-[#4CAF50]/10">
+              <Card v-for="info in contactInfo" :key="info.label" class="flex items-center gap-4 border-border p-6 transition-colors hover:border-primary">
+                <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-primary/10">
                   <svg v-if="info.icon === 'map'" xmlns="http://www.w3.org/2000/svg" :class="['h-6 w-6', info.colorClass]" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                     <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" /><circle cx="12" cy="10" r="3" />
                   </svg>
@@ -52,7 +52,7 @@ const contactInfo = computed(() =>
                     <circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" />
                   </svg>
                 </div>
-                <p class="text-gray-300">{{ info.label }}</p>
+                <p class="text-muted-foreground">{{ info.label }}</p>
               </Card>
             </div>
           </div>

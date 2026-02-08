@@ -1,5 +1,5 @@
 ---
-import '../styles/global.css'
+import '../styles/index.css'
 import Header from '../components/Header.vue'
 import Footer from '../components/Footer.vue'
 
@@ -22,8 +22,18 @@ const lang = path.startsWith('/en') ? 'en' : 'fr'
     <link rel="icon" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
     <title>{title} — Ecofinconseils</title>
+    <script is:inline>
+      (function () {
+        try {
+          var stored = localStorage.getItem('ecofin-theme');
+          if (stored === 'dark') document.documentElement.classList.add('dark');
+          else if (stored === 'light') document.documentElement.classList.remove('dark');
+          else if (window.matchMedia('(prefers-color-scheme: dark)').matches) document.documentElement.classList.add('dark');
+        } catch (e) {}
+      })();
+    </script>
   </head>
-  <body class="min-h-screen flex flex-col bg-black text-gray-100">
+  <body class="min-h-screen flex flex-col bg-background text-foreground">
     <Header client:load locale={lang} />
     <main class="flex-1">
       <slot />

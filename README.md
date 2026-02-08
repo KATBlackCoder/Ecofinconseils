@@ -39,7 +39,10 @@ Ce projet suit les spécifications du [PRD](doc/prd.md) (Product Requirements Do
 │   ├── pages/             # FR + en/ (EN)
 │   ├── lib/
 │   └── styles/
-│       └── global.css
+│       ├── index.css          # Point d'entrée (Tailwind, thèmes, animations)
+│       ├── light-theme.css
+│       ├── dark-theme.css
+│       └── animations.css
 ├── components.json
 ├── package.json
 └── README.md

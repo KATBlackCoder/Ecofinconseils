@@ -77,64 +77,64 @@ async function onSubmit(e: Event) {
 <template>
   <form class="space-y-6" @submit="onSubmit">
     <div class="space-y-2">
-      <Label for="contact-name" class="text-gray-300">{{ labels.name }}</Label>
+      <Label for="contact-name" class="text-muted-foreground">{{ labels.name }}</Label>
       <Input
         id="contact-name"
         v-model="name"
         type="text"
         placeholder="John Doe"
-        class="border-gray-700 bg-[#0A1929] text-white placeholder:text-gray-500 focus-visible:border-[#4CAF50] focus-visible:ring-[#4CAF50]"
+        class="border-border bg-background text-foreground placeholder:text-muted-foreground focus-visible:border-primary focus-visible:ring-primary"
       />
       <p v-if="errors.name" class="text-sm text-red-400">{{ errors.name }}</p>
     </div>
     <div class="space-y-2">
-      <Label for="contact-email" class="text-gray-300">{{ labels.email }}</Label>
+      <Label for="contact-email" class="text-muted-foreground">{{ labels.email }}</Label>
       <Input
         id="contact-email"
         v-model="email"
         type="email"
         placeholder="john@example.com"
-        class="border-gray-700 bg-[#0A1929] text-white placeholder:text-gray-500 focus-visible:border-[#4CAF50] focus-visible:ring-[#4CAF50]"
+        class="border-border bg-background text-foreground placeholder:text-muted-foreground focus-visible:border-primary focus-visible:ring-primary"
       />
       <p v-if="errors.email" class="text-sm text-red-400">{{ errors.email }}</p>
     </div>
     <div class="space-y-2">
-      <Label for="contact-phone" class="text-gray-300">{{ labels.phone }}</Label>
+      <Label for="contact-phone" class="text-muted-foreground">{{ labels.phone }}</Label>
       <Input
         id="contact-phone"
         v-model="phone"
         type="tel"
         placeholder="+223 XX XX XX XX"
-        class="border-gray-700 bg-[#0A1929] text-white placeholder:text-gray-500 focus-visible:border-[#4CAF50] focus-visible:ring-[#4CAF50]"
+        class="border-border bg-background text-foreground placeholder:text-muted-foreground focus-visible:border-primary focus-visible:ring-primary"
       />
     </div>
     <div class="space-y-2">
-      <Label for="contact-subject" class="text-gray-300">{{ labels.subject }}</Label>
+      <Label for="contact-subject" class="text-muted-foreground">{{ labels.subject }}</Label>
       <Input
         id="contact-subject"
         v-model="subject"
         type="text"
         :placeholder="subjectPlaceholder"
-        class="border-gray-700 bg-[#0A1929] text-white placeholder:text-gray-500 focus-visible:border-[#4CAF50] focus-visible:ring-[#4CAF50]"
+        class="border-border bg-background text-foreground placeholder:text-muted-foreground focus-visible:border-primary focus-visible:ring-primary"
       />
       <p v-if="errors.subject" class="text-sm text-red-400">{{ errors.subject }}</p>
     </div>
     <div class="space-y-2">
-      <Label for="contact-message" class="text-gray-300">{{ labels.message }}</Label>
+      <Label for="contact-message" class="text-muted-foreground">{{ labels.message }}</Label>
       <Textarea
         id="contact-message"
         v-model="message"
         rows="5"
         :placeholder="messagePlaceholder"
-        class="min-h-[150px] resize-y border-gray-700 bg-[#0A1929] text-white placeholder:text-gray-500 focus-visible:border-[#4CAF50] focus-visible:ring-[#4CAF50]"
+        class="min-h-[150px] resize-y border-border bg-background text-foreground placeholder:text-muted-foreground focus-visible:border-primary focus-visible:ring-primary"
       />
       <p v-if="errors.message" class="text-sm text-red-400">{{ errors.message }}</p>
     </div>
-    <p v-if="success" class="text-sm text-[#4CAF50]">{{ labels.success }}</p>
+    <p v-if="success" class="text-sm text-primary">{{ labels.success }}</p>
     <Button
       type="submit"
       :disabled="isSubmitting"
-      class="w-full bg-[#4CAF50] text-white hover:bg-[#45a049] disabled:opacity-70"
+      class="w-full bg-primary text-primary-foreground hover:bg-primary/90 disabled:opacity-70"
     >
       {{ isSubmitting ? labels.sending : labels.submit }}
     </Button>
