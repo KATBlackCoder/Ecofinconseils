@@ -1,12 +1,14 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro'
-import TeamHero from '../../components/TeamHero.astro'
-import TeamSection from '../../components/TeamSection.astro'
+import SectionHero from '../../components/SectionHero.vue'
+import TeamSection from '../../components/TeamSection.vue'
 ---
 <BaseLayout title="Team" description="Ecofinconseils team — Experts in banking, insurance and consulting.">
-  <TeamHero
+  <SectionHero
+    client:load
     title="Our Team"
     subtitle="Experts at your service"
+    variant="compact"
   />
-  <TeamSection locale="en" />
+  <TeamSection client:load locale="en" />
 </BaseLayout>

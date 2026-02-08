@@ -1,12 +1,14 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro'
-import ContactHero from '../../components/ContactHero.astro'
-import ContactSection from '../../components/ContactSection.astro'
+import SectionHero from '../../components/SectionHero.vue'
+import ContactSection from '../../components/ContactSection.vue'
 ---
 <BaseLayout title="Contact" description="Contact Ecofinconseils — Bamako, Mali.">
-  <ContactHero
+  <SectionHero
+    client:load
     title="Contact Us"
     subtitle="We are here to listen"
+    variant="compact"
   />
-  <ContactSection locale="en" />
+  <ContactSection client:load locale="en" />
 </BaseLayout>

@@ -11,38 +11,36 @@ Ce projet suit les spécifications du [PRD](doc/prd.md) (Product Requirements Do
 
 ## Stack technique
 
-- **Framework** : [Astro](https://astro.build) (output statique) — HTML statique par défaut, peu de JS.
-- **UI** : Vue 3 + Tailwind CSS ; composants type shadcn-vue (Card, formulaires, etc.).
-- **Hébergement** : Prévu pour un déploiement en fichiers statiques (ex. LWS).
+- **Framework** : [Astro](https://astro.build) (output statique).
+- **UI** : Vue 3 + Tailwind CSS ; **shadcn-vue** (Button, Card, Input, Label, Textarea, DropdownMenu, Badge) dans `src/components/ui/`.
+- **Hébergement** : Déploiement en fichiers statiques (ex. LWS).
+
+## Architecture Vue / Astro
+
+- **Vue (client:load)** : `Header.vue`, `Footer.vue`, `SectionHero.vue`, `StatsCards.vue`, `MissionSection.vue`, `CtaSection.vue`, `ServicesSection.vue`, `AboutSection.vue`, `TeamSection.vue`, `ContactSection.vue`, `ContactForm.vue`, `AnimateInView.vue`. UI : `ui/button/`, `ui/card/`, `ui/input/`, `ui/label/`, `ui/textarea/`, `ui/dropdown-menu/`, `ui/badge/` (shadcn-vue).
+- **Astro** : `BaseLayout.astro` (seul layout), toutes les pages `*.astro` qui importent les composants Vue.
 
 ## Structure du projet
 
 ```text
 /
+├── docs/
+│   ├── PROGRESS.md         # Suivi d'avancement
+│   ├── ARCHITECTURE.md     # Décisions techniques
+│   └── CHANGELOG.md        # Historique des changements
 ├── doc/
-│   └── prd.md              # Cahier des charges / PRD
+│   └── prd.md             # Cahier des charges / PRD
+├── react/                 # App React de référence (design)
 ├── public/
-│   ├── favicon.svg
-│   └── favicon.ico
 ├── src/
-│   ├── components/         # Composants réutilisables
-│   │   ├── ui/             # Card, Button, etc.
-│   │   ├── Header.vue      # Nav + sélecteur de langue
-│   │   ├── Footer.astro
-│   │   ├── ContactForm.vue
-│   │   ├── *Hero.astro     # Heroes (Page, Services, About, Team, Contact)
-│   │   └── *Section.astro  # Blocs de contenu par page
+│   ├── components/        # Vue + ui/ (shadcn-vue)
 │   ├── layouts/
 │   │   └── BaseLayout.astro
-│   ├── pages/
-│   │   ├── index.astro     # Accueil
-│   │   ├── services.astro
-│   │   ├── about.astro
-│   │   ├── equipe.astro
-│   │   ├── contact.astro
-│   │   └── en/             # Pages en anglais
+│   ├── pages/             # FR + en/ (EN)
+│   ├── lib/
 │   └── styles/
 │       └── global.css
+├── components.json
 ├── package.json
 └── README.md
 ```
@@ -79,4 +77,5 @@ Ce projet suit les spécifications du [PRD](doc/prd.md) (Product Requirements Do
 ## Références
 
 - [PRD du projet](doc/prd.md)
+- [Suivi d'avancement](docs/PROGRESS.md) · [Architecture](docs/ARCHITECTURE.md) · [Changelog](docs/CHANGELOG.md)
 - [Documentation Astro](https://docs.astro.build)

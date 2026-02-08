@@ -1,12 +1,14 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
-import AboutHero from '../components/AboutHero.astro'
-import AboutSection from '../components/AboutSection.astro'
+import SectionHero from '../components/SectionHero.vue'
+import AboutSection from '../components/AboutSection.vue'
 ---
 <BaseLayout title="À propos" description="Historique et mission d'Ecofinconseils — Le connecteur entre acteurs à Bamako.">
-  <AboutHero
+  <SectionHero
+    client:load
     title="À Propos"
     subtitle="Ecofinconseils - Le connecteur stratégique"
+    variant="compact"
   />
-  <AboutSection locale="fr" />
+  <AboutSection client:load locale="fr" />
 </BaseLayout>

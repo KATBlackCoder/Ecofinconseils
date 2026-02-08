@@ -1,6 +1,7 @@
 # build output
 dist/
 doc/
+react/
 
 # generated types
 .astro/

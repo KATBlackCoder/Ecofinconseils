@@ -1,27 +1,31 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
-import PageHero from '../components/PageHero.astro'
-import StatsCards from '../components/StatsCards.astro'
-import MissionSection from '../components/MissionSection.astro'
-import CtaSection from '../components/CtaSection.astro'
+import SectionHero from '../components/SectionHero.vue'
+import StatsCards from '../components/StatsCards.vue'
+import MissionSection from '../components/MissionSection.vue'
+import CtaSection from '../components/CtaSection.vue'
 ---
 <BaseLayout
   title="Accueil"
   description="Votre partenaire financier de confiance. Expert en banque, assurance et conseil stratégique à Bamako."
 >
-  <PageHero
+  <SectionHero
+    client:load
     title="Votre partenaire financier de confiance"
     subtitle="Expert en banque, assurance et conseil stratégique à Bamako"
+    variant="full"
     ctaText="Découvrir nos services"
     ctaHref="/services"
   />
-  <StatsCards locale="fr" />
+  <StatsCards client:load locale="fr" />
   <MissionSection
+    client:load
     title="Notre Mission"
     body="Ecofinconseils est le connecteur stratégique entre les institutions financières et leurs clients à Bamako. Nous offrons des solutions sur mesure en banque, assurance et études stratégiques."
     highlight="Devenir le leader des services de conseil financier au Mali."
   />
   <CtaSection
+    client:load
     title="Prêt à développer votre projet ?"
     description="Contactez-nous dès aujourd'hui pour discuter de vos besoins financiers"
     subtext="Votre partenaire de confiance pour tous vos besoins financiers à Bamako."

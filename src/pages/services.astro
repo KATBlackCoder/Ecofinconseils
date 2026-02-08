@@ -1,12 +1,14 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
-import ServicesHero from '../components/ServicesHero.astro'
-import ServicesSection from '../components/ServicesSection.astro'
+import SectionHero from '../components/SectionHero.vue'
+import ServicesSection from '../components/ServicesSection.vue'
 ---
 <BaseLayout title="Services" description="Nos trois pôles : Banque, Assurance, Bureau d'études. Ecofinconseils, Bamako.">
-  <ServicesHero
+  <SectionHero
+    client:load
     title="Nos Services"
     subtitle="Trois pôles d'excellence pour répondre à tous vos besoins financiers"
+    variant="compact"
   />
-  <ServicesSection locale="fr" />
+  <ServicesSection client:load locale="fr" />
 </BaseLayout>

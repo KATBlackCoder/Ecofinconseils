@@ -1,11 +1,19 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
+import { Textarea } from '@/components/ui/textarea'
 
 const props = defineProps<{ locale: 'fr' | 'en' }>()
 
 const isSubmitting = ref(false)
 const success = ref(false)
-const form = ref<HTMLFormElement | null>(null)
+const name = ref('')
+const email = ref('')
+const phone = ref('')
+const subject = ref('')
+const message = ref('')
 
 const labels = computed(() =>
   props.locale === 'fr'
@@ -40,16 +48,12 @@ const subjectPlaceholder = computed(() => (props.locale === 'fr' ? "Demande d'in
 const messagePlaceholder = computed(() => (props.locale === 'fr' ? 'Votre message...' : 'Your message...'))
 
 function validate(): boolean {
-  const el = form.value
-  if (!el) return false
-  const data = new FormData(el)
   errors.value = {}
-  if (!(data.get('name') as string)?.trim()) errors.value.name = labels.value.required
-  const email = (data.get('email') as string)?.trim()
-  if (!email) errors.value.email = labels.value.required
-  else if (!/^\S+@\S+\.\S+/.test(email)) errors.value.email = labels.value.emailInvalid
-  if (!(data.get('subject') as string)?.trim()) errors.value.subject = labels.value.required
-  if (!(data.get('message') as string)?.trim()) errors.value.message = labels.value.required
+  if (!name.value.trim()) errors.value.name = labels.value.required
+  if (!email.value.trim()) errors.value.email = labels.value.required
+  else if (!/^\S+@\S+\.\S+/.test(email.value)) errors.value.email = labels.value.emailInvalid
+  if (!subject.value.trim()) errors.value.subject = labels.value.required
+  if (!message.value.trim()) errors.value.message = labels.value.required
   return Object.keys(errors.value).length === 0
 }
 
@@ -60,75 +64,79 @@ async function onSubmit(e: Event) {
   success.value = false
   await new Promise((r) => setTimeout(r, 1500))
   success.value = true
-  form.value?.reset()
+  name.value = ''
+  email.value = ''
+  phone.value = ''
+  subject.value = ''
+  message.value = ''
   errors.value = {}
   isSubmitting.value = false
 }
 </script>
 
 <template>
-  <form ref="form" class="space-y-6" @submit="onSubmit">
-    <div>
-      <label for="contact-name" class="text-gray-300">{{ labels.name }}</label>
-      <input
+  <form class="space-y-6" @submit="onSubmit">
+    <div class="space-y-2">
+      <Label for="contact-name" class="text-gray-300">{{ labels.name }}</Label>
+      <Input
         id="contact-name"
-        name="name"
+        v-model="name"
         type="text"
-        class="mt-2 w-full rounded-md border border-gray-700 bg-[#0A1929] px-3 py-2 text-white placeholder-gray-500 focus:border-[#4CAF50] focus:outline-none focus:ring-1 focus:ring-[#4CAF50]"
         placeholder="John Doe"
+        class="border-gray-700 bg-[#0A1929] text-white placeholder:text-gray-500 focus-visible:border-[#4CAF50] focus-visible:ring-[#4CAF50]"
       />
-      <p v-if="errors.name" class="mt-1 text-sm text-red-400">{{ errors.name }}</p>
+      <p v-if="errors.name" class="text-sm text-red-400">{{ errors.name }}</p>
     </div>
-    <div>
-      <label for="contact-email" class="text-gray-300">{{ labels.email }}</label>
-      <input
+    <div class="space-y-2">
+      <Label for="contact-email" class="text-gray-300">{{ labels.email }}</Label>
+      <Input
         id="contact-email"
-        name="email"
+        v-model="email"
         type="email"
-        class="mt-2 w-full rounded-md border border-gray-700 bg-[#0A1929] px-3 py-2 text-white placeholder-gray-500 focus:border-[#4CAF50] focus:outline-none focus:ring-1 focus:ring-[#4CAF50]"
         placeholder="john@example.com"
+        class="border-gray-700 bg-[#0A1929] text-white placeholder:text-gray-500 focus-visible:border-[#4CAF50] focus-visible:ring-[#4CAF50]"
       />
-      <p v-if="errors.email" class="mt-1 text-sm text-red-400">{{ errors.email }}</p>
+      <p v-if="errors.email" class="text-sm text-red-400">{{ errors.email }}</p>
     </div>
-    <div>
-      <label for="contact-phone" class="text-gray-300">{{ labels.phone }}</label>
-      <input
+    <div class="space-y-2">
+      <Label for="contact-phone" class="text-gray-300">{{ labels.phone }}</Label>
+      <Input
         id="contact-phone"
-        name="phone"
+        v-model="phone"
         type="tel"
-        class="mt-2 w-full rounded-md border border-gray-700 bg-[#0A1929] px-3 py-2 text-white placeholder-gray-500 focus:border-[#4CAF50] focus:outline-none focus:ring-1 focus:ring-[#4CAF50]"
         placeholder="+223 XX XX XX XX"
+        class="border-gray-700 bg-[#0A1929] text-white placeholder:text-gray-500 focus-visible:border-[#4CAF50] focus-visible:ring-[#4CAF50]"
       />
     </div>
-    <div>
-      <label for="contact-subject" class="text-gray-300">{{ labels.subject }}</label>
-      <input
+    <div class="space-y-2">
+      <Label for="contact-subject" class="text-gray-300">{{ labels.subject }}</Label>
+      <Input
         id="contact-subject"
-        name="subject"
+        v-model="subject"
         type="text"
-        class="mt-2 w-full rounded-md border border-gray-700 bg-[#0A1929] px-3 py-2 text-white placeholder-gray-500 focus:border-[#4CAF50] focus:outline-none focus:ring-1 focus:ring-[#4CAF50]"
         :placeholder="subjectPlaceholder"
+        class="border-gray-700 bg-[#0A1929] text-white placeholder:text-gray-500 focus-visible:border-[#4CAF50] focus-visible:ring-[#4CAF50]"
       />
-      <p v-if="errors.subject" class="mt-1 text-sm text-red-400">{{ errors.subject }}</p>
+      <p v-if="errors.subject" class="text-sm text-red-400">{{ errors.subject }}</p>
     </div>
-    <div>
-      <label for="contact-message" class="text-gray-300">{{ labels.message }}</label>
-      <textarea
+    <div class="space-y-2">
+      <Label for="contact-message" class="text-gray-300">{{ labels.message }}</Label>
+      <Textarea
         id="contact-message"
-        name="message"
+        v-model="message"
         rows="5"
-        class="mt-2 min-h-[150px] w-full resize-y rounded-md border border-gray-700 bg-[#0A1929] px-3 py-2 text-white placeholder-gray-500 focus:border-[#4CAF50] focus:outline-none focus:ring-1 focus:ring-[#4CAF50]"
         :placeholder="messagePlaceholder"
+        class="min-h-[150px] resize-y border-gray-700 bg-[#0A1929] text-white placeholder:text-gray-500 focus-visible:border-[#4CAF50] focus-visible:ring-[#4CAF50]"
       />
-      <p v-if="errors.message" class="mt-1 text-sm text-red-400">{{ errors.message }}</p>
+      <p v-if="errors.message" class="text-sm text-red-400">{{ errors.message }}</p>
     </div>
     <p v-if="success" class="text-sm text-[#4CAF50]">{{ labels.success }}</p>
-    <button
+    <Button
       type="submit"
       :disabled="isSubmitting"
-      class="w-full rounded-md bg-[#4CAF50] px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-[#45a049] disabled:opacity-70"
+      class="w-full bg-[#4CAF50] text-white hover:bg-[#45a049] disabled:opacity-70"
     >
       {{ isSubmitting ? labels.sending : labels.submit }}
-    </button>
+    </Button>
   </form>
 </template>

@@ -1,27 +1,31 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro'
-import PageHero from '../../components/PageHero.astro'
-import StatsCards from '../../components/StatsCards.astro'
-import MissionSection from '../../components/MissionSection.astro'
-import CtaSection from '../../components/CtaSection.astro'
+import SectionHero from '../../components/SectionHero.vue'
+import StatsCards from '../../components/StatsCards.vue'
+import MissionSection from '../../components/MissionSection.vue'
+import CtaSection from '../../components/CtaSection.vue'
 ---
 <BaseLayout
   title="Home"
   description="Your trusted financial partner. Expert in banking, insurance and strategic consulting in Bamako."
 >
-  <PageHero
+  <SectionHero
+    client:load
     title="Your trusted financial partner"
     subtitle="Expert in banking, insurance and strategic consulting in Bamako"
+    variant="full"
     ctaText="Discover our services"
     ctaHref="/en/services"
   />
-  <StatsCards locale="en" />
+  <StatsCards client:load locale="en" />
   <MissionSection
+    client:load
     title="Our Mission"
     body="Ecofinconseils is the strategic connector between financial institutions and their clients in Bamako. We offer tailored solutions in banking, insurance and strategic studies."
     highlight="To become the leader in financial advisory services in Mali."
   />
   <CtaSection
+    client:load
     title="Ready to develop your project?"
     description="Contact us today to discuss your financial needs"
     subtext="Your trusted partner for all your financial needs in Bamako."
