@@ -19,39 +19,44 @@ const labels = computed(() =>
   props.locale === 'fr'
     ? {
         name: 'Nom complet',
-        email: 'Email',
+        email: 'Email (optionnel)',
         phone: 'Téléphone',
         subject: 'Sujet',
         message: 'Votre message',
         submit: 'Envoyer',
         sending: 'Envoi en cours...',
         success: 'Message envoyé avec succès !',
+        successDetail: 'Nous vous recontacterons dans les plus brefs délais.',
         required: 'Ce champ est requis',
         emailInvalid: 'Email valide requis',
       }
     : {
         name: 'Full name',
-        email: 'Email',
+        email: 'Email (optional)',
         phone: 'Phone',
         subject: 'Subject',
         message: 'Your message',
         submit: 'Send',
         sending: 'Sending...',
         success: 'Message sent successfully!',
+        successDetail: 'We will get back to you as soon as possible.',
         required: 'This field is required',
         emailInvalid: 'Valid email required',
       }
 )
 
 const errors = ref<Record<string, string>>({})
+const submitError = ref('')
 const subjectPlaceholder = computed(() => (props.locale === 'fr' ? "Demande d'information" : 'Information request'))
 const messagePlaceholder = computed(() => (props.locale === 'fr' ? 'Votre message...' : 'Your message...'))
+const errorSendLabel = computed(() => (props.locale === 'fr' ? 'Erreur lors de l\'envoi. Réessayez ou contactez-nous par email.' : 'Error sending message. Please try again or email us.'))
 
 function validate(): boolean {
   errors.value = {}
+  submitError.value = ''
   if (!name.value.trim()) errors.value.name = labels.value.required
-  if (!email.value.trim()) errors.value.email = labels.value.required
-  else if (!/^\S+@\S+\.\S+/.test(email.value)) errors.value.email = labels.value.emailInvalid
+  if (email.value.trim() && !/^\S+@\S+\.\S+/.test(email.value)) errors.value.email = labels.value.emailInvalid
+  if (!phone.value.trim()) errors.value.phone = labels.value.required
   if (!subject.value.trim()) errors.value.subject = labels.value.required
   if (!message.value.trim()) errors.value.message = labels.value.required
   return Object.keys(errors.value).length === 0
@@ -62,14 +67,33 @@ async function onSubmit(e: Event) {
   if (!validate()) return
   isSubmitting.value = true
   success.value = false
-  await new Promise((r) => setTimeout(r, 1500))
-  success.value = true
-  name.value = ''
-  email.value = ''
-  phone.value = ''
-  subject.value = ''
-  message.value = ''
-  errors.value = {}
+  submitError.value = ''
+
+  try {
+    const formData = new FormData()
+    formData.append('name', name.value)
+    formData.append('email', email.value)
+    formData.append('phone', phone.value)
+    formData.append('subject', subject.value)
+    formData.append('message', message.value)
+    const res = await fetch('/contact.php', { method: 'POST', body: formData })
+    const data = await res.json().catch(() => ({}))
+    if (res.ok && data.ok === true) {
+      success.value = true
+      name.value = ''
+      email.value = ''
+      phone.value = ''
+      subject.value = ''
+      message.value = ''
+      errors.value = {}
+      setTimeout(() => { success.value = false }, 5000)
+    } else {
+      submitError.value = errorSendLabel.value
+    }
+  } catch {
+    submitError.value = errorSendLabel.value
+  }
+
   isSubmitting.value = false
 }
 </script>
@@ -104,9 +128,10 @@ async function onSubmit(e: Event) {
         id="contact-phone"
         v-model="phone"
         type="tel"
-        placeholder="+223 XX XX XX XX"
+        placeholder="+223 44 51 51 75"
         class="border-border bg-background text-foreground placeholder:text-muted-foreground focus-visible:border-primary focus-visible:ring-primary"
       />
+      <p v-if="errors.phone" class="text-sm text-red-400">{{ errors.phone }}</p>
     </div>
     <div class="space-y-2">
       <Label for="contact-subject" class="text-muted-foreground">{{ labels.subject }}</Label>
@@ -130,7 +155,15 @@ async function onSubmit(e: Event) {
       />
       <p v-if="errors.message" class="text-sm text-red-400">{{ errors.message }}</p>
     </div>
-    <p v-if="success" class="text-sm text-primary">{{ labels.success }}</p>
+    <div
+      v-if="success"
+      role="alert"
+      class="rounded-lg border border-primary/30 bg-primary/10 p-4 text-primary"
+    >
+      <p class="font-semibold">{{ labels.success }}</p>
+      <p class="mt-1 text-sm opacity-90">{{ labels.successDetail }}</p>
+    </div>
+    <p v-if="submitError" class="text-sm text-red-400">{{ submitError }}</p>
     <Button
       type="submit"
       :disabled="isSubmitting"

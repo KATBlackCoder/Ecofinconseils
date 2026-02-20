@@ -12,14 +12,14 @@ const navItems = computed(() =>
         { href: '/', label: 'Accueil' },
         { href: '/services', label: 'Services' },
         { href: '/about', label: 'À propos' },
-        { href: '/equipe', label: 'Équipe' },
+        //{ href: '/equipe', label: 'Équipe' },
         { href: '/contact', label: 'Contact' },
       ]
     : [
         { href: '/en', label: 'Home' },
         { href: '/en/services', label: 'Services' },
         { href: '/en/about', label: 'About' },
-        { href: '/en/equipe', label: 'Team' },
+        //{ href: '/en/equipe', label: 'Team' },
         { href: '/en/contact', label: 'Contact' },
       ]
 )

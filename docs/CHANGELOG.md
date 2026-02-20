@@ -8,14 +8,18 @@ Historique des changements. Format [Keep a Changelog](https://keepachangelog.com
 
 - Documentation projet : `docs/PROGRESS.md`, `docs/ARCHITECTURE.md`, `docs/CHANGELOG.md` (maintenance docs).
 - **Dark mode** : `ThemeToggle.vue`, thèmes clair/sombre via `light-theme.css` / `dark-theme.css`, persistance `localStorage` + script anti-flash dans BaseLayout.
+- **Branding** : Logo Ecofinconseils dans Header et Footer (`logo-header.png` / `logo-header@2x.png`, générés avec ImageMagick depuis `Logo2.jpeg`). Favicon.ico et favicon.svg dérivés du logo (icône barres + flèche en SVG).
 
 ### Changed
 
 - **Styles** : Refactor en `src/styles/index.css` (entrée), `light-theme.css`, `dark-theme.css`, `animations.css`. Couleurs Tailwind en dur remplacées par classes de thème (`bg-background`, `text-primary`, etc.).
+- **Header** : Texte « Ecofin / conseils » remplacé par l’image logo (lien accueil, srcset 1x/2x).
+- **Footer** : Texte « Ecofin / conseils » remplacé par l’image logo (lien accueil selon `locale`).
 
 ### Removed
 
 - **Styles** : `src/styles/global.css` (contenu déplacé vers index + thèmes + animations).
+- **Assets** : `src/assets/background.svg` (template Astro inutilisé). `astro.svg` supprimé puis recréé minimal pour éviter ENOENT du pipeline CSS.
 
 ---
 

@@ -74,11 +74,11 @@ const ctaBody = computed(() =>
           <Card class="border-border bg-gradient-to-br from-secondary to-background p-8 text-center md:p-12">
             <h2 class="mb-4 text-2xl font-bold text-foreground md:text-3xl">{{ ctaTitle }}</h2>
             <p class="mx-auto mb-6 max-w-2xl text-muted-foreground">{{ ctaBody }}</p>
-            <a href="mailto:recrutement@ecofinconseils.ml" class="inline-flex items-center text-primary transition-colors hover:text-primary/90">
+            <a href="mailto:recrutement@ecofinconseils.com" class="inline-flex items-center text-primary transition-colors hover:text-primary/90">
               <svg xmlns="http://www.w3.org/2000/svg" class="mr-2 h-5 w-5" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                 <rect width="20" height="16" x="2" y="4" rx="2" /><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
               </svg>
-              recrutement@ecofinconseils.ml
+              recrutement@ecofinconseils.com
             </a>
           </Card>
         </div>

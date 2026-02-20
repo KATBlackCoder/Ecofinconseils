@@ -9,14 +9,14 @@ const links = computed(() =>
         { href: '/en', label: 'Home' },
         { href: '/en/services', label: 'Services' },
         { href: '/en/about', label: 'About' },
-        { href: '/en/equipe', label: 'Team' },
+        //{ href: '/en/equipe', label: 'Team' },
         { href: '/en/contact', label: 'Contact' },
       ]
     : [
         { href: '/', label: 'Accueil' },
         { href: '/services', label: 'Services' },
         { href: '/about', label: 'À propos' },
-        { href: '/equipe', label: 'Équipe' },
+        //{ href: '/equipe', label: 'Équipe' },
         { href: '/contact', label: 'Contact' },
       ]
 )
@@ -27,9 +27,9 @@ const description = computed(() =>
     : "Votre partenaire de confiance pour la banque, l'assurance et le conseil stratégique à Bamako."
 )
 const allRights = computed(() => (props.locale === 'en' ? 'All rights reserved.' : 'Tous droits réservés.'))
-const address = 'Bamako, Mali'
-const phone = '+223 XX XX XX XX'
-const email = 'contact@ecofinconseils.ml'
+const address = 'Bamako, Hamdallaye ACI 2000, Bureau 108, Immeuble ABK 6 (Mali)'
+const phone = '+22344515175'
+const email = 'contact@ecofinconseils.com'
 const year = new Date().getFullYear()
 </script>
 
@@ -38,10 +38,16 @@ const year = new Date().getFullYear()
     <div class="container mx-auto px-4 py-12 lg:px-8">
       <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
         <div>
-          <div class="mb-4 flex items-center font-bold">
-            <span class="text-xl text-foreground">Ecofin</span>
-            <span class="text-xl text-primary">conseils</span>
-          </div>
+          <a :href="locale === 'fr' ? '/' : '/en'" class="mb-4 inline-block" aria-label="Ecofinconseils — Accueil">
+            <img
+              src="/logo-header.png"
+              srcset="/logo-header.png 1x, /logo-header@2x.png 2x"
+              alt=""
+              width="120"
+              height="48"
+              class="h-10 w-auto object-contain"
+            />
+          </a>
           <p class="mb-4 text-sm text-muted-foreground">{{ description }}</p>
           <div class="flex gap-4">
             <a href="#" class="text-muted-foreground transition-colors hover:text-primary" aria-label="Facebook">

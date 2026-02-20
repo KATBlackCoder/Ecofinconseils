@@ -1,6 +1,6 @@
 # Suivi d'avancement — Ecofinconseils
 
-État actuel du projet et tâches. Dernière mise à jour : 2025-02-07.
+État actuel du projet et tâches. Dernière mise à jour : 2026-02-07.
 
 ## Statut global
 
@@ -27,6 +27,7 @@
 - [x] shadcn-vue : Button, Card, Input, Label, Textarea, DropdownMenu, Badge
 - [x] Section Services alignée sur l’app React (CardHeader/CardContent, Badge vert, `bg-[#0A1929]/50`)
 - [x] Palette : `#0A1929`, `#0D2137`, `#4CAF50`, thème dans `index.css` + `light-theme.css` / `dark-theme.css`
+- [x] **Branding** : Logo Ecofinconseils (`public/Logo2.jpeg`) dans Header et Footer ; variantes `logo-header.png` / `logo-header@2x.png` (ImageMagick) ; favicon.ico et favicon.svg dérivés du logo.
 
 ### M3 — Documentation (En cours)
 

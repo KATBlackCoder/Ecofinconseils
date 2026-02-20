@@ -72,13 +72,15 @@ Ce projet suit les spécifications du [PRD](doc/prd.md) (Product Requirements Do
 | `pnpm preview`  | Prévisualiser le build localement           |
 | `pnpm astro ...`| Commandes CLI Astro                         |
 
-## Déploiement
+## Déploiement (LWS Perso)
 
-1. Build : `pnpm build`
-2. Déployer le contenu du dossier `dist/` sur le serveur (LWS ou autre hébergement statique).
+- **Build** : `pnpm build` → le site statique est dans `dist/`.
+- **Formulaire contact** : script PHP `contact.php` (PHPMailer). Sur LWS, après upload de `dist/`, exécuter `composer require phpmailer/phpmailer` à la racine du site et configurer `TO_EMAIL` dans `contact.php`.
+- **Hébergement LWS** : guide détaillé dans [docs/DEPLOY_LWS.md](docs/DEPLOY_LWS.md) (FTP, upload de `dist/`, domaine, sitemap).
 
 ## Références
 
 - [PRD du projet](doc/prd.md)
 - [Suivi d'avancement](docs/PROGRESS.md) · [Architecture](docs/ARCHITECTURE.md) · [Changelog](docs/CHANGELOG.md)
+- [Déploiement LWS](docs/DEPLOY_LWS.md)
 - [Documentation Astro](https://docs.astro.build)

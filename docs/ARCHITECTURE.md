@@ -16,6 +16,7 @@ Décisions techniques et organisation du code. Site vitrine Astro + Vue, output 
 - `src/pages/` : Astro ; FR à la racine, EN dans `en/`
 - `src/lib/utils.ts` : `cn()` pour classes
 - `src/styles/index.css` : point d’entrée ; `light-theme.css` / `dark-theme.css` : variables thème ; `animations.css` : `[data-animate-inview]`, hero-grid, keyframes
+- **Assets / branding** : Logo source `public/Logo2.jpeg`. Variantes header (ImageMagick) : `logo-header.png`, `logo-header@2x.png`. Favicons : `favicon.ico`, `favicon.svg` (icône barres + flèche). Logo dans Header et Footer (lien accueil).
 
 ## Décisions (ADR)
 
@@ -38,7 +39,8 @@ Palette et structure (ex. Services : CardHeader/CardContent, Badge) alignées su
 
 - Sections : Vue + Card shadcn + AnimateInView + prop `locale`.
 - Formulaire : ContactForm avec Input, Label, Textarea, Button ; validation manuelle.
-- Header : DropdownMenu shadcn pour la langue.
+- Header : Logo (img 1x/2x), DropdownMenu shadcn pour la langue, ThemeToggle.
+- Footer : Logo (lien accueil), liens rapides, contact, réseaux ; même logo que le Header.
 
 ## Dépendances
 

@@ -6,22 +6,58 @@ import Footer from '../components/Footer.vue'
 interface Props {
   title: string
   description?: string
+  /** Image URL pour Open Graph (sinon logo par défaut) */
+  image?: string
+  /** Exclure de l’indexation (ex. pages bêta) */
+  noindex?: boolean
 }
 
-const { title, description = "Plateforme vitrine Ecofinconseils — Banque, Assurance, Bureau d'études. Bamako, Mali." } = Astro.props
+const { title, description = "Plateforme vitrine Ecofinconseils — Banque, Assurance, Bureau d'études. Bamako, Mali.", image, noindex = false } = Astro.props
 const path = Astro.url.pathname
 const lang = path.startsWith('/en') ? 'en' : 'fr'
+const site = Astro.site ?? 'https://ecofinconseils.com'
+const canonical = `${site}${path === '/' || path === '/en' ? path : path.replace(/\/$/, '')}`
+const ogImage = image ?? `${site}/logo-header@2x.png`
+const fullTitle = `${title} — Ecofinconseils`
 ---
 <!doctype html>
 <html lang={lang}>
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
+    {noindex ? <meta name="robots" content="noindex, nofollow" /> : null}
+    <link rel="canonical" href={canonical} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" />
+    <meta name="theme-color" content="#0A1929" />
     <meta name="generator" content={Astro.generator} />
-    <title>{title} — Ecofinconseils</title>
+    <title>{fullTitle}</title>
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:locale" content={lang === 'fr' ? 'fr_FR' : 'en_US'} />
+    <meta property="og:site_name" content="Ecofinconseils" />
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    <link rel="sitemap" type="application/xml" href="/sitemap-index.xml" />
+    <!-- JSON-LD Organization -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'Organization',
+      name: 'Ecofinconseils',
+      url: site,
+      logo: `${site}/logo-header@2x.png`,
+      description: description,
+      address: { '@type': 'PostalAddress', addressLocality: 'Bamako', addressCountry: 'ML' },
+      contactPoint: { '@type': 'ContactPoint', email: 'contact@ecofinconseils.com', contactType: 'customer service', areaServed: 'ML' }
+    })} />
     <script is:inline>
       (function () {
         try {

@@ -10,15 +10,15 @@ const infoTitle = computed(() => (props.locale === 'en' ? 'Contact Information' 
 const contactInfo = computed(() =>
   props.locale === 'en'
     ? [
-        { label: 'Bamako, Mali', icon: 'map' as const, colorClass: 'text-blue-400' },
-        { label: '+223 XX XX XX XX', icon: 'phone' as const, colorClass: 'text-primary' },
-        { label: 'contact@ecofinconseils.ml', icon: 'mail' as const, colorClass: 'text-purple-400' },
+        { label: 'Bamako, Hamdallaye ACI 2000, Bureau 108, Immeuble ABK 6 (Mali)', icon: 'map' as const, colorClass: 'text-blue-400' },
+        { label: '+223 44 51 51 75', icon: 'phone' as const, colorClass: 'text-primary' },
+        { label: 'contact@ecofinconseils.com', icon: 'mail' as const, colorClass: 'text-purple-400' },
         { label: 'Mon - Fri: 8am - 6pm', icon: 'clock' as const, colorClass: 'text-orange-400' },
       ]
     : [
-        { label: 'Bamako, Mali', icon: 'map' as const, colorClass: 'text-blue-400' },
-        { label: '+223 XX XX XX XX', icon: 'phone' as const, colorClass: 'text-primary' },
-        { label: 'contact@ecofinconseils.ml', icon: 'mail' as const, colorClass: 'text-purple-400' },
+        { label: 'Bamako, Hamdallaye ACI 2000, Bureau 108, Immeuble ABK 6 (Mali)', icon: 'map' as const, colorClass: 'text-blue-400' },
+        { label: '+223 44 51 51 75', icon: 'phone' as const, colorClass: 'text-primary' },
+        { label: 'contact@ecofinconseils.com', icon: 'mail' as const, colorClass: 'text-purple-400' },
         { label: 'Lun - Ven : 8h - 18h', icon: 'clock' as const, colorClass: 'text-orange-400' },
       ]
 )
