@@ -6,10 +6,26 @@
     "ctaHref": "/services"
   },
   "stats": [
-    { "value": "10+", "label": "Années d'expérience", "icon": "trophy" },
-    { "value": "50+", "label": "Partenaires", "icon": "building2" },
-    { "value": "500+", "label": "Clients satisfaits", "icon": "users" },
-    { "value": "100+", "label": "Projets réalisés", "icon": "trending-up" }
+    {
+      "value": "10+",
+      "label": "Années d'expérience",
+      "icon": "trophy"
+    },
+    {
+      "value": "50+",
+      "label": "Partenaires",
+      "icon": "building2"
+    },
+    {
+      "value": "500+",
+      "label": "Clients satisfaits",
+      "icon": "users"
+    },
+    {
+      "value": "1000+",
+      "label": "Projets réalisés",
+      "icon": "trending-up"
+    }
   ],
   "mission": {
     "title": "Notre Mission",
