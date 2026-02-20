@@ -4,6 +4,7 @@ import SectionHero from '../components/SectionHero.vue'
 import StatsCards from '../components/StatsCards.vue'
 import MissionSection from '../components/MissionSection.vue'
 import CtaSection from '../components/CtaSection.vue'
+import data from '../data/fr/home.json'
 ---
 <BaseLayout
   title="Accueil"
@@ -11,25 +12,25 @@ import CtaSection from '../components/CtaSection.vue'
 >
   <SectionHero
     client:load
-    title="Votre partenaire financier de confiance"
-    subtitle="Expert en banque, assurance et conseil stratégique à Bamako"
+    title={data.hero.title}
+    subtitle={data.hero.subtitle}
     variant="full"
-    ctaText="Découvrir nos services"
-    ctaHref="/services"
+    ctaText={data.hero.ctaText}
+    ctaHref={data.hero.ctaHref}
   />
-  <StatsCards client:load locale="fr" />
+  <StatsCards client:load stats={data.stats} />
   <MissionSection
     client:load
-    title="Notre Mission"
-    body="Ecofinconseils est le connecteur stratégique entre les institutions financières et leurs clients à Bamako. Nous offrons des solutions sur mesure en banque, assurance et études stratégiques."
-    highlight="Devenir le leader des services de conseil financier au Mali."
+    title={data.mission.title}
+    body={data.mission.body}
+    highlight={data.mission.highlight}
   />
   <CtaSection
     client:load
-    title="Prêt à développer votre projet ?"
-    description="Contactez-nous dès aujourd'hui pour discuter de vos besoins financiers"
-    subtext="Votre partenaire de confiance pour tous vos besoins financiers à Bamako."
-    ctaText="Contact"
-    ctaHref="/contact"
+    title={data.cta.title}
+    description={data.cta.description}
+    subtext={data.cta.subtext}
+    ctaText={data.cta.ctaText}
+    ctaHref={data.cta.ctaHref}
   />
 </BaseLayout>

@@ -1,0 +1,59 @@
+{
+  "services": [
+    {
+      "title": "Intermédiaire en Banque",
+      "description": "Solutions bancaires complètes avec agrément BCEAO",
+      "features": [
+        "Agrément BCEAO N° ML00009/2024",
+        "Négociation de crédit pour les entreprises et les particuliers",
+        "Mobilisation de ressources",
+        "Conseil en financement"
+      ],
+      "icon": "building",
+      "badge": "Agrément BCEAO N° ML00009/2024"
+    },
+    {
+      "title": "Intermédiaire en Assurance",
+      "description": "Mandataire indépendant pour toutes vos assurances",
+      "features": [
+        "Mandataire indépendant",
+        "Assurance vie et santé",
+        "Assurance auto et habitation",
+        "Protection entreprise"
+      ],
+      "icon": "shield",
+      "badge": "Mandataire Indépendant"
+    },
+    {
+      "title": "Bureau d'Études",
+      "description": "Expertise stratégique et analyse institutionnelle",
+      "features": [
+        "Études et suivi-évaluations",
+        "Conseil stratégique",
+        "Analyse institutionnelle",
+        "Montage de projets"
+      ],
+      "icon": "file",
+      "badge": ""
+    }
+  ],
+  "whyTitle": "Pourquoi nous choisir ?",
+  "whyItems": [
+    {
+      "title": "Expertise Locale",
+      "desc": "Connaissance approfondie du marché malien et des réglementations BCEAO"
+    },
+    {
+      "title": "Solutions Sur Mesure",
+      "desc": "Conseil personnalisé adapté à vos besoins spécifiques"
+    },
+    {
+      "title": "Réseau Étendu",
+      "desc": "Partenariats avec les principales institutions financières"
+    },
+    {
+      "title": "Accompagnement Total",
+      "desc": "Suivi personnalisé de A à Z dans tous vos projets"
+    }
+  ]
+}

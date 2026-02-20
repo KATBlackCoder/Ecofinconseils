@@ -1,48 +1,50 @@
 <script setup lang="ts">
-import { computed } from 'vue'
 import { Card } from '@/components/ui/card'
 import AnimateInView from './AnimateInView.vue'
 
-const MEMBER_IMAGES = [
+export interface TeamMember {
+  name: string
+  role: string
+  bio: string
+  photo?: string
+  linkedin?: string
+  email?: string
+}
+
+export interface TeamCta {
+  title: string
+  body: string
+  email: string
+}
+
+const FALLBACK_IMAGES = [
   'https://images.unsplash.com/photo-1739300293504-234817eead52?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400',
   'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400',
   'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400',
   'https://images.unsplash.com/photo-1580489944761-15a19d654956?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400',
 ]
 
-const props = withDefaults(defineProps<{ locale?: 'fr' | 'en' }>(), { locale: 'fr' })
-
-const members = computed(() =>
-  props.locale === 'en'
-    ? [
-        { name: 'Amadou Traoré', role: 'Chief Executive Officer', bio: 'Finance expert with 15 years of experience in Malian banking sector.' },
-        { name: 'Fatoumata Diallo', role: 'Chief Financial Officer', bio: 'Specialist in wealth management and strategic consulting.' },
-        { name: 'Ibrahim Keita', role: 'Insurance Manager', bio: 'Insurance products expert with international certification.' },
-        { name: 'Mariam Coulibaly', role: 'Research Director', bio: 'PhD in Economics, specialized in African market studies.' },
-      ]
-    : [
-        { name: 'Amadou Traoré', role: 'Directeur Général', bio: "Expert en finance avec 15 ans d'expérience dans le secteur bancaire malien." },
-        { name: 'Fatoumata Diallo', role: 'Directrice Financière', bio: 'Spécialiste en gestion de patrimoine et conseil stratégique.' },
-        { name: 'Ibrahim Keita', role: 'Responsable Assurances', bio: "Expert en produits d'assurance avec certification internationale." },
-        { name: 'Mariam Coulibaly', role: "Cheffe Bureau d'Études", bio: 'Docteure en économie, spécialisée en études de marché africains.' },
-      ]
-)
-const ctaTitle = computed(() => (props.locale === 'en' ? 'Join Our Team' : 'Rejoignez Notre Équipe'))
-const ctaBody = computed(() =>
-  props.locale === 'en'
-    ? 'We are always looking for passionate talent to strengthen our team. If you share our values and vision, get in touch.'
-    : "Nous sommes toujours à la recherche de talents passionnés pour renforcer notre équipe. Si vous partagez nos valeurs et notre vision, contactez-nous."
-)
+defineProps<{
+  members: TeamMember[]
+  cta: TeamCta
+}>()
 </script>
 
 <template>
   <section class="bg-gradient-to-b from-gradient-from to-gradient-to py-20">
     <div class="container mx-auto px-4 lg:px-8">
       <div class="mx-auto grid max-w-7xl grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
-        <AnimateInView v-for="(member, index) in members" :key="member.name" :stagger="index as 0 | 1 | 2 | 3">
+        <AnimateInView v-for="(member, index) in members" :key="member.name" :stagger="(index as 0 | 1 | 2 | 3)">
           <Card class="group h-full overflow-hidden border-border transition-all duration-300 hover:border-primary">
             <div class="relative aspect-square overflow-hidden">
-              <img :src="MEMBER_IMAGES[index]" :alt="member.name" class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110" loading="lazy" width="400" height="400" />
+              <img
+                :src="member.photo || FALLBACK_IMAGES[index % FALLBACK_IMAGES.length]"
+                :alt="member.name"
+                class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
+                loading="lazy"
+                width="400"
+                height="400"
+              />
               <div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60" aria-hidden="true" />
             </div>
             <div class="p-6">
@@ -50,12 +52,24 @@ const ctaBody = computed(() =>
               <p class="mb-3 text-sm text-primary">{{ member.role }}</p>
               <p class="mb-4 text-sm text-muted-foreground">{{ member.bio }}</p>
               <div class="flex gap-3">
-                <a href="#" class="text-muted-foreground transition-colors hover:text-primary" aria-label="LinkedIn">
+                <a
+                  v-if="member.linkedin && member.linkedin !== '#'"
+                  :href="member.linkedin"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-muted-foreground transition-colors hover:text-primary"
+                  aria-label="LinkedIn"
+                >
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                     <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z" /><rect width="4" height="12" x="2" y="9" /><circle cx="4" cy="4" r="2" />
                   </svg>
                 </a>
-                <a href="#" class="text-muted-foreground transition-colors hover:text-primary" aria-label="Email">
+                <a
+                  v-if="member.email"
+                  :href="`mailto:${member.email}`"
+                  class="text-muted-foreground transition-colors hover:text-primary"
+                  aria-label="Email"
+                >
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                     <rect width="20" height="16" x="2" y="4" rx="2" /><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
                   </svg>
@@ -72,13 +86,13 @@ const ctaBody = computed(() =>
       <AnimateInView variant="scale">
         <div class="mx-auto max-w-4xl">
           <Card class="border-border bg-gradient-to-br from-secondary to-background p-8 text-center md:p-12">
-            <h2 class="mb-4 text-2xl font-bold text-foreground md:text-3xl">{{ ctaTitle }}</h2>
-            <p class="mx-auto mb-6 max-w-2xl text-muted-foreground">{{ ctaBody }}</p>
-            <a href="mailto:recrutement@ecofinconseils.com" class="inline-flex items-center text-primary transition-colors hover:text-primary/90">
+            <h2 class="mb-4 text-2xl font-bold text-foreground md:text-3xl">{{ cta.title }}</h2>
+            <p class="mx-auto mb-6 max-w-2xl text-muted-foreground">{{ cta.body }}</p>
+            <a :href="`mailto:${cta.email}`" class="inline-flex items-center text-primary transition-colors hover:text-primary/90">
               <svg xmlns="http://www.w3.org/2000/svg" class="mr-2 h-5 w-5" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                 <rect width="20" height="16" x="2" y="4" rx="2" /><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
               </svg>
-              recrutement@ecofinconseils.com
+              {{ cta.email }}
             </a>
           </Card>
         </div>

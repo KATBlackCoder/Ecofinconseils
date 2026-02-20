@@ -2,13 +2,19 @@
 import BaseLayout from '../layouts/BaseLayout.astro'
 import SectionHero from '../components/SectionHero.vue'
 import AboutSection from '../components/AboutSection.vue'
+import data from '../data/fr/about.json'
 ---
 <BaseLayout title="À propos" description="Historique et mission d'Ecofinconseils — Le connecteur entre acteurs à Bamako.">
   <SectionHero
     client:load
-    title="À Propos"
-    subtitle="Ecofinconseils - Le connecteur stratégique"
+    title={data.hero.title}
+    subtitle={data.hero.subtitle}
     variant="compact"
   />
-  <AboutSection client:load locale="fr" />
+  <AboutSection
+    client:load
+    history={data.history}
+    values={data.values}
+    mission={data.mission}
+  />
 </BaseLayout>

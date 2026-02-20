@@ -1,0 +1,26 @@
+{
+  "hero": {
+    "title": "Votre partenaire financier de confiance",
+    "subtitle": "Expert en banque, assurance et conseil stratégique à Bamako",
+    "ctaText": "Découvrir nos services",
+    "ctaHref": "/services"
+  },
+  "stats": [
+    { "value": "10+", "label": "Années d'expérience", "icon": "trophy" },
+    { "value": "50+", "label": "Partenaires", "icon": "building2" },
+    { "value": "500+", "label": "Clients satisfaits", "icon": "users" },
+    { "value": "100+", "label": "Projets réalisés", "icon": "trending-up" }
+  ],
+  "mission": {
+    "title": "Notre Mission",
+    "body": "Ecofinconseils est le connecteur stratégique entre les institutions financières et leurs clients à Bamako. Nous offrons des solutions sur mesure en banque, assurance et études stratégiques.",
+    "highlight": "Devenir le leader des services de conseil financier au Mali."
+  },
+  "cta": {
+    "title": "Prêt à développer votre projet ?",
+    "description": "Contactez-nous dès aujourd'hui pour discuter de vos besoins financiers",
+    "subtext": "Votre partenaire de confiance pour tous vos besoins financiers à Bamako.",
+    "ctaText": "Contact",
+    "ctaHref": "/contact"
+  }
+}

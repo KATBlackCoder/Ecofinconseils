@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro'
 import SectionHero from '../../components/SectionHero.vue'
 import ServicesSection from '../../components/ServicesSection.vue'
+import data from '../../data/en/services.json'
 ---
 <BaseLayout title="Services" description="Our three pillars: Banking, Insurance, Consulting. Ecofinconseils, Bamako.">
   <SectionHero
@@ -10,5 +11,10 @@ import ServicesSection from '../../components/ServicesSection.vue'
     subtitle="Three centers of excellence to meet all your financial needs"
     variant="compact"
   />
-  <ServicesSection client:load locale="en" />
+  <ServicesSection
+    client:load
+    services={data.services}
+    whyTitle={data.whyTitle}
+    whyItems={data.whyItems}
+  />
 </BaseLayout>

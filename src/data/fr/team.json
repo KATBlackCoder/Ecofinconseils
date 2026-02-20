@@ -1,0 +1,45 @@
+{
+  "hero": {
+    "title": "Notre Équipe",
+    "subtitle": "Des experts au service de votre réussite"
+  },
+  "members": [
+    {
+      "name": "Amadou Traoré",
+      "role": "Directeur Général",
+      "bio": "Expert en finance avec 15 ans d'expérience dans le secteur bancaire malien.",
+      "photo": "",
+      "linkedin": "#",
+      "email": ""
+    },
+    {
+      "name": "Fatoumata Diallo",
+      "role": "Directrice Financière",
+      "bio": "Spécialiste en gestion de patrimoine et conseil stratégique.",
+      "photo": "",
+      "linkedin": "#",
+      "email": ""
+    },
+    {
+      "name": "Ibrahim Keita",
+      "role": "Responsable Assurances",
+      "bio": "Expert en produits d'assurance avec certification internationale.",
+      "photo": "",
+      "linkedin": "#",
+      "email": ""
+    },
+    {
+      "name": "Mariam Coulibaly",
+      "role": "Cheffe Bureau d'Études",
+      "bio": "Docteure en économie, spécialisée en études de marché africains.",
+      "photo": "",
+      "linkedin": "#",
+      "email": ""
+    }
+  ],
+  "cta": {
+    "title": "Rejoignez Notre Équipe",
+    "body": "Nous sommes toujours à la recherche de talents passionnés pour renforcer notre équipe. Si vous partagez nos valeurs et notre vision, contactez-nous.",
+    "email": "recrutement@ecofinconseils.com"
+  }
+}

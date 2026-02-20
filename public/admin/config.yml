@@ -1,0 +1,336 @@
+# ============================================================
+# BACKEND — GitHub (auth PKCE native via Sveltia CMS, sans proxy OAuth)
+# ============================================================
+backend:
+  name: github
+  repo: KATBlackCoder/Ecofinconseils
+  branch: main
+  app_id: 0v23liHB2voQz1u61bZj
+
+# Mode local pour le développement (nécessite `pnpm cms:dev`)
+local_backend: true
+
+# Dossier où les médias uploadés sont stockés
+media_folder: public/media
+public_folder: /media
+
+# ============================================================
+# COLLECTIONS
+# ============================================================
+collections:
+
+  # ----------------------------------------------------------
+  # CONTENU FRANÇAIS
+  # ----------------------------------------------------------
+  - name: contenu_fr
+    label: "🇫🇷 Contenu Français"
+    files:
+
+      - name: home_fr
+        label: "Accueil"
+        file: src/data/fr/home.json
+        fields:
+          - label: "Hero"
+            name: hero
+            widget: object
+            fields:
+              - { label: "Titre", name: title, widget: string }
+              - { label: "Sous-titre", name: subtitle, widget: string }
+              - { label: "Texte du bouton CTA", name: ctaText, widget: string }
+              - { label: "Lien du bouton CTA", name: ctaHref, widget: string }
+
+          - label: "Statistiques"
+            name: stats
+            widget: list
+            fields:
+              - { label: "Valeur (ex: 10+)", name: value, widget: string }
+              - { label: "Label", name: label, widget: string }
+              - label: "Icône"
+                name: icon
+                widget: select
+                options:
+                  - { label: "Trophée", value: trophy }
+                  - { label: "Bâtiment", value: building2 }
+                  - { label: "Utilisateurs", value: users }
+                  - { label: "Tendance", value: trending-up }
+
+          - label: "Section Mission"
+            name: mission
+            widget: object
+            fields:
+              - { label: "Titre", name: title, widget: string }
+              - { label: "Corps du texte", name: body, widget: text }
+              - { label: "Point clé (highlight)", name: highlight, widget: string }
+
+          - label: "Section CTA (appel à l'action)"
+            name: cta
+            widget: object
+            fields:
+              - { label: "Titre", name: title, widget: string }
+              - { label: "Description", name: description, widget: string }
+              - { label: "Sous-texte", name: subtext, widget: string, required: false }
+              - { label: "Texte du bouton", name: ctaText, widget: string }
+              - { label: "Lien du bouton", name: ctaHref, widget: string }
+
+      - name: services_fr
+        label: "Services"
+        file: src/data/fr/services.json
+        fields:
+          - label: "Liste des services"
+            name: services
+            widget: list
+            fields:
+              - { label: "Titre", name: title, widget: string }
+              - { label: "Description", name: description, widget: string }
+              - label: "Fonctionnalités"
+                name: features
+                widget: list
+                field: { label: "Fonctionnalité", name: feature, widget: string }
+              - label: "Icône"
+                name: icon
+                widget: select
+                options:
+                  - { label: "Banque", value: building }
+                  - { label: "Bouclier", value: shield }
+                  - { label: "Document", value: file }
+              - { label: "Badge (laisser vide si absent)", name: badge, widget: string, required: false }
+
+          - { label: "Titre 'Pourquoi nous choisir'", name: whyTitle, widget: string }
+          - label: "Points différenciants"
+            name: whyItems
+            widget: list
+            fields:
+              - { label: "Titre", name: title, widget: string }
+              - { label: "Description", name: desc, widget: string }
+
+      - name: about_fr
+        label: "À Propos"
+        file: src/data/fr/about.json
+        fields:
+          - label: "Hero"
+            name: hero
+            widget: object
+            fields:
+              - { label: "Titre", name: title, widget: string }
+              - { label: "Sous-titre", name: subtitle, widget: string }
+
+          - label: "Notre Histoire"
+            name: history
+            widget: object
+            fields:
+              - { label: "Titre", name: title, widget: string }
+              - { label: "Contenu", name: content, widget: text }
+
+          - label: "Nos Valeurs"
+            name: values
+            widget: object
+            fields:
+              - { label: "Titre de la section", name: title, widget: string }
+              - label: "Liste des valeurs"
+                name: list
+                widget: list
+                fields:
+                  - { label: "Titre", name: title, widget: string }
+                  - { label: "Description", name: desc, widget: string }
+                  - label: "Icône"
+                    name: icon
+                    widget: select
+                    options:
+                      - { label: "Bouclier (Confiance)", value: shield }
+                      - { label: "Cible (Excellence)", value: target }
+                      - { label: "Ampoule (Innovation)", value: lightbulb }
+
+          - label: "Le Connecteur Stratégique"
+            name: mission
+            widget: object
+            fields:
+              - { label: "Titre", name: title, widget: string }
+              - { label: "Corps du texte", name: body, widget: text }
+
+      - name: team_fr
+        label: "Équipe"
+        file: src/data/fr/team.json
+        fields:
+          - label: "Hero"
+            name: hero
+            widget: object
+            fields:
+              - { label: "Titre", name: title, widget: string }
+              - { label: "Sous-titre", name: subtitle, widget: string }
+
+          - label: "Membres de l'équipe"
+            name: members
+            widget: list
+            fields:
+              - { label: "Nom", name: name, widget: string }
+              - { label: "Rôle / Poste", name: role, widget: string }
+              - { label: "Biographie", name: bio, widget: text }
+              - { label: "Photo", name: photo, widget: image, required: false, media_folder: /public/media, public_folder: /media }
+              - { label: "Lien LinkedIn", name: linkedin, widget: string, required: false }
+              - { label: "Email", name: email, widget: string, required: false }
+
+          - label: "Section Recrutement"
+            name: cta
+            widget: object
+            fields:
+              - { label: "Titre", name: title, widget: string }
+              - { label: "Corps du texte", name: body, widget: text }
+              - { label: "Email de recrutement", name: email, widget: string }
+
+  # ----------------------------------------------------------
+  # CONTENU ANGLAIS
+  # ----------------------------------------------------------
+  - name: contenu_en
+    label: "🇬🇧 English Content"
+    files:
+
+      - name: home_en
+        label: "Home"
+        file: src/data/en/home.json
+        fields:
+          - label: "Hero"
+            name: hero
+            widget: object
+            fields:
+              - { label: "Title", name: title, widget: string }
+              - { label: "Subtitle", name: subtitle, widget: string }
+              - { label: "CTA Button Text", name: ctaText, widget: string }
+              - { label: "CTA Button Link", name: ctaHref, widget: string }
+
+          - label: "Statistics"
+            name: stats
+            widget: list
+            fields:
+              - { label: "Value (e.g. 10+)", name: value, widget: string }
+              - { label: "Label", name: label, widget: string }
+              - label: "Icon"
+                name: icon
+                widget: select
+                options:
+                  - { label: "Trophy", value: trophy }
+                  - { label: "Building", value: building2 }
+                  - { label: "Users", value: users }
+                  - { label: "Trending", value: trending-up }
+
+          - label: "Mission Section"
+            name: mission
+            widget: object
+            fields:
+              - { label: "Title", name: title, widget: string }
+              - { label: "Body text", name: body, widget: text }
+              - { label: "Key highlight", name: highlight, widget: string }
+
+          - label: "CTA Section"
+            name: cta
+            widget: object
+            fields:
+              - { label: "Title", name: title, widget: string }
+              - { label: "Description", name: description, widget: string }
+              - { label: "Subtext", name: subtext, widget: string, required: false }
+              - { label: "Button text", name: ctaText, widget: string }
+              - { label: "Button link", name: ctaHref, widget: string }
+
+      - name: services_en
+        label: "Services"
+        file: src/data/en/services.json
+        fields:
+          - label: "Services list"
+            name: services
+            widget: list
+            fields:
+              - { label: "Title", name: title, widget: string }
+              - { label: "Description", name: description, widget: string }
+              - label: "Features"
+                name: features
+                widget: list
+                field: { label: "Feature", name: feature, widget: string }
+              - label: "Icon"
+                name: icon
+                widget: select
+                options:
+                  - { label: "Banking", value: building }
+                  - { label: "Shield", value: shield }
+                  - { label: "Document", value: file }
+              - { label: "Badge (leave empty if none)", name: badge, widget: string, required: false }
+
+          - { label: "'Why choose us' title", name: whyTitle, widget: string }
+          - label: "Differentiators"
+            name: whyItems
+            widget: list
+            fields:
+              - { label: "Title", name: title, widget: string }
+              - { label: "Description", name: desc, widget: string }
+
+      - name: about_en
+        label: "About"
+        file: src/data/en/about.json
+        fields:
+          - label: "Hero"
+            name: hero
+            widget: object
+            fields:
+              - { label: "Title", name: title, widget: string }
+              - { label: "Subtitle", name: subtitle, widget: string }
+
+          - label: "Our History"
+            name: history
+            widget: object
+            fields:
+              - { label: "Title", name: title, widget: string }
+              - { label: "Content", name: content, widget: text }
+
+          - label: "Our Values"
+            name: values
+            widget: object
+            fields:
+              - { label: "Section title", name: title, widget: string }
+              - label: "Values list"
+                name: list
+                widget: list
+                fields:
+                  - { label: "Title", name: title, widget: string }
+                  - { label: "Description", name: desc, widget: string }
+                  - label: "Icon"
+                    name: icon
+                    widget: select
+                    options:
+                      - { label: "Shield (Trust)", value: shield }
+                      - { label: "Target (Excellence)", value: target }
+                      - { label: "Lightbulb (Innovation)", value: lightbulb }
+
+          - label: "The Strategic Connector"
+            name: mission
+            widget: object
+            fields:
+              - { label: "Title", name: title, widget: string }
+              - { label: "Body text", name: body, widget: text }
+
+      - name: team_en
+        label: "Team"
+        file: src/data/en/team.json
+        fields:
+          - label: "Hero"
+            name: hero
+            widget: object
+            fields:
+              - { label: "Title", name: title, widget: string }
+              - { label: "Subtitle", name: subtitle, widget: string }
+
+          - label: "Team members"
+            name: members
+            widget: list
+            fields:
+              - { label: "Name", name: name, widget: string }
+              - { label: "Role / Position", name: role, widget: string }
+              - { label: "Biography", name: bio, widget: text }
+              - { label: "Photo", name: photo, widget: image, required: false, media_folder: /public/media, public_folder: /media }
+              - { label: "LinkedIn URL", name: linkedin, widget: string, required: false }
+              - { label: "Email", name: email, widget: string, required: false }
+
+          - label: "Recruitment section"
+            name: cta
+            widget: object
+            fields:
+              - { label: "Title", name: title, widget: string }
+              - { label: "Body text", name: body, widget: text }
+              - { label: "Recruitment email", name: email, widget: string }

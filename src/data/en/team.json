@@ -1,0 +1,45 @@
+{
+  "hero": {
+    "title": "Our Team",
+    "subtitle": "Experts at your service"
+  },
+  "members": [
+    {
+      "name": "Amadou Traoré",
+      "role": "Chief Executive Officer",
+      "bio": "Finance expert with 15 years of experience in Malian banking sector.",
+      "photo": "",
+      "linkedin": "#",
+      "email": ""
+    },
+    {
+      "name": "Fatoumata Diallo",
+      "role": "Chief Financial Officer",
+      "bio": "Specialist in wealth management and strategic consulting.",
+      "photo": "",
+      "linkedin": "#",
+      "email": ""
+    },
+    {
+      "name": "Ibrahim Keita",
+      "role": "Insurance Manager",
+      "bio": "Insurance products expert with international certification.",
+      "photo": "",
+      "linkedin": "#",
+      "email": ""
+    },
+    {
+      "name": "Mariam Coulibaly",
+      "role": "Research Director",
+      "bio": "PhD in Economics, specialized in African market studies.",
+      "photo": "",
+      "linkedin": "#",
+      "email": ""
+    }
+  ],
+  "cta": {
+    "title": "Join Our Team",
+    "body": "We are always looking for passionate talent to strengthen our team. If you share our values and vision, get in touch.",
+    "email": "recrutement@ecofinconseils.com"
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "services": [
+    {
+      "title": "Banking Intermediary",
+      "description": "Complete banking solutions with BCEAO accreditation",
+      "features": [
+        "BCEAO Accreditation N° ML00009/2024",
+        "Credit negotiation for businesses and individuals",
+        "Resource mobilisation",
+        "Financing advice"
+      ],
+      "icon": "building",
+      "badge": "BCEAO Accreditation N° ML00009/2024"
+    },
+    {
+      "title": "Insurance Intermediary",
+      "description": "Independent agent for all your insurance needs",
+      "features": [
+        "Independent agent",
+        "Life and health insurance",
+        "Auto and home insurance",
+        "Business protection"
+      ],
+      "icon": "shield",
+      "badge": "Independent Agent"
+    },
+    {
+      "title": "Consulting Office",
+      "description": "Strategic expertise and institutional analysis",
+      "features": [
+        "Studies and monitoring-evaluation",
+        "Strategic consulting",
+        "Institutional analysis",
+        "Project structuring"
+      ],
+      "icon": "file",
+      "badge": ""
+    }
+  ],
+  "whyTitle": "Why choose us?",
+  "whyItems": [
+    {
+      "title": "Local Expertise",
+      "desc": "In-depth knowledge of the Malian market and BCEAO regulations"
+    },
+    {
+      "title": "Tailored Solutions",
+      "desc": "Personalised advice adapted to your specific needs"
+    },
+    {
+      "title": "Extended Network",
+      "desc": "Partnerships with major financial institutions"
+    },
+    {
+      "title": "Full Support",
+      "desc": "Personalised follow-up from A to Z in all your projects"
+    }
+  ]
+}

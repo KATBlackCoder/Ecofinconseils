@@ -2,13 +2,18 @@
 import BaseLayout from '../../layouts/BaseLayout.astro'
 import SectionHero from '../../components/SectionHero.vue'
 import TeamSection from '../../components/TeamSection.vue'
+import data from '../../data/en/team.json'
 ---
 <BaseLayout title="Team" description="Ecofinconseils team — Experts in banking, insurance and consulting.">
   <SectionHero
     client:load
-    title="Our Team"
-    subtitle="Experts at your service"
+    title={data.hero.title}
+    subtitle={data.hero.subtitle}
     variant="compact"
   />
-  <TeamSection client:load locale="en" />
+  <TeamSection
+    client:load
+    members={data.members}
+    cta={data.cta}
+  />
 </BaseLayout>

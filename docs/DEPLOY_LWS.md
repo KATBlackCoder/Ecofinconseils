@@ -90,7 +90,88 @@ pnpm build
 
 Puis renvoie le contenu de `dist/` par FTP (écrase les fichiers existants). Tu peux ne pas toucher aux fichiers inchangés si ton client FTP le permet.
 
+---
+
+## 7. Sveltia CMS — Interface d'administration
+
+Le projet intègre [Sveltia CMS](https://github.com/sveltia/sveltia-cms) (compatible Decap CMS) pour permettre la modification du contenu sans toucher au code. **Aucun proxy OAuth ni service tiers requis** — l'authentification GitHub se fait nativement via PKCE directement dans le navigateur.
+
+### 7.1 Workflow global
+
+```
+Éditeur modifie contenu via /admin
+        ↓
+Sveltia CMS commit les fichiers JSON dans GitHub
+        ↓
+Développeur lance: pnpm build
+        ↓
+Upload dist/ sur LWS
+```
+
+### 7.2 Développement local (sans authentification)
+
+Lance deux terminaux en parallèle :
+
+```bash
+# Terminal 1 — proxy CMS local
+pnpm cms:dev
+
+# Terminal 2 — serveur Astro
+pnpm dev
+```
+
+Ouvre `http://localhost:4321/admin` → l'interface CMS apparaît sans authentification.
+
+Les modifications sauvegardées écrivent directement dans `src/data/fr/` et `src/data/en/`.
+
+### 7.3 Production — Authentification GitHub OAuth (sans proxy)
+
+Sveltia CMS supporte le flux PKCE : **aucun serveur intermédiaire requis**.
+
+**Étape 1 — Créer un GitHub OAuth App**
+
+1. Va sur [GitHub → Settings → Developer settings → OAuth Apps → New OAuth App](https://github.com/settings/applications/new)
+2. Remplis :
+   - **Application name** : `Ecofinconseils CMS`
+   - **Homepage URL** : `https://ecofinconseils.com`
+   - **Authorization callback URL** : `https://ecofinconseils.com/admin`
+3. Copie le **Client ID** (le Client Secret n'est pas nécessaire avec PKCE)
+
+**Étape 2 — Ajouter le Client ID dans `public/admin/config.yml`**
+
+```yaml
+backend:
+  name: github
+  repo: KATBlackCoder/Ecofinconseils
+  branch: main
+  app_id: <ton-github-client-id>   # ← ajouter cette ligne
+```
+
+**Étape 3 — Build et déployer**
+
+```bash
+pnpm build
+# Upload dist/ sur LWS via FTP
+```
+
+L'interface admin sera accessible sur `https://ecofinconseils.com/admin`.
+
+### 7.4 Fichiers de contenu éditables
+
+| Page | Fichier FR | Fichier EN |
+|------|-----------|-----------|
+| Accueil | `src/data/fr/home.json` | `src/data/en/home.json` |
+| Services | `src/data/fr/services.json` | `src/data/en/services.json` |
+| À propos | `src/data/fr/about.json` | `src/data/en/about.json` |
+| Équipe | `src/data/fr/team.json` | `src/data/en/team.json` |
+
+Les photos des membres peuvent être uploadées via le CMS → elles sont stockées dans `public/media/`.
+
+---
+
 ## Référence
 
 - [LWS — Hébergement web](https://www.lws.fr/hebergement-web/)
 - [PHPMailer](https://github.com/PHPMailer/PHPMailer)
+- [Decap CMS](https://decapcms.org/docs/)
+- [Proxy OAuth pour Decap CMS](https://github.com/vencax/netlify-cms-github-oauth-provider)

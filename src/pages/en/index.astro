@@ -4,6 +4,7 @@ import SectionHero from '../../components/SectionHero.vue'
 import StatsCards from '../../components/StatsCards.vue'
 import MissionSection from '../../components/MissionSection.vue'
 import CtaSection from '../../components/CtaSection.vue'
+import data from '../../data/en/home.json'
 ---
 <BaseLayout
   title="Home"
@@ -11,25 +12,25 @@ import CtaSection from '../../components/CtaSection.vue'
 >
   <SectionHero
     client:load
-    title="Your trusted financial partner"
-    subtitle="Expert in banking, insurance and strategic consulting in Bamako"
+    title={data.hero.title}
+    subtitle={data.hero.subtitle}
     variant="full"
-    ctaText="Discover our services"
-    ctaHref="/en/services"
+    ctaText={data.hero.ctaText}
+    ctaHref={data.hero.ctaHref}
   />
-  <StatsCards client:load locale="en" />
+  <StatsCards client:load stats={data.stats} />
   <MissionSection
     client:load
-    title="Our Mission"
-    body="Ecofinconseils is the strategic connector between financial institutions and their clients in Bamako. We offer tailored solutions in banking, insurance and strategic studies."
-    highlight="To become the leader in financial advisory services in Mali."
+    title={data.mission.title}
+    body={data.mission.body}
+    highlight={data.mission.highlight}
   />
   <CtaSection
     client:load
-    title="Ready to develop your project?"
-    description="Contact us today to discuss your financial needs"
-    subtext="Your trusted partner for all your financial needs in Bamako."
-    ctaText="Contact"
-    ctaHref="/en/contact"
+    title={data.cta.title}
+    description={data.cta.description}
+    subtext={data.cta.subtext}
+    ctaText={data.cta.ctaText}
+    ctaHref={data.cta.ctaHref}
   />
 </BaseLayout>

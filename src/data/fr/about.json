@@ -1,0 +1,34 @@
+{
+  "hero": {
+    "title": "À Propos",
+    "subtitle": "Ecofinconseils - Le connecteur stratégique"
+  },
+  "history": {
+    "title": "Notre Histoire",
+    "content": "Fondée à Bamako, Ecofinconseils s'est imposée comme le partenaire privilégié des institutions financières et de leurs clients. Notre approche unique combine expertise locale et standards internationaux."
+  },
+  "values": {
+    "title": "Nos Valeurs",
+    "list": [
+      {
+        "title": "Confiance",
+        "desc": "Transparence et intégrité dans chaque interaction",
+        "icon": "shield"
+      },
+      {
+        "title": "Excellence",
+        "desc": "Standards professionnels de haut niveau",
+        "icon": "target"
+      },
+      {
+        "title": "Innovation",
+        "desc": "Solutions modernes adaptées au contexte local",
+        "icon": "lightbulb"
+      }
+    ]
+  },
+  "mission": {
+    "title": "Le Connecteur Stratégique",
+    "body": "Nous créons des ponts entre les institutions financières et leurs clients, en offrant une expertise à 360° : banque, assurance et conseil stratégique. Notre rôle est de faciliter, d'optimiser et de sécuriser vos projets financiers."
+  }
+}
